@@ -1,0 +1,150 @@
+:root {
+    --bg-color: #000000;
+    --card-bg: #16181c;
+
+    --primary-color: #a9e573;
+    --text-color: #e2e8f0;
+    --muted-text: #94a3b8;
+
+    --input-bg: #000000;
+    --border-color: #5f6368;
+
+    --button-bg: #ffff10;
+    --button-text: #0f172a;
+
+    --link-color: #8ab4f8;
+    --bright-link-color: #ffff10;
+    --radius: 8px;
+
+    --spacing: 30px;
+    --font-family: monospace;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-size: 16px;
+    line-height: 1.4;
+    overflow-wrap: break-word;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    background: var(--input-bg);
+    color: var(--text-color);
+    outline: none;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: var(--primary-color);
+}
+
+main {
+    width: 80%;
+}
+
+nav {
+    width: 100%;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    margin: auto;
+    box-sizing: border-box;
+    background: var(--card-bg);
+
+    * {
+        gap: 20px;
+    }
+}
+
+h4 {
+    margin-top: 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--text-color);
+}
+
+a {
+    text-decoration: none;
+    font-size: 13px;
+    color: var(--link-color);
+    display: block;
+    align-self: center;
+}
+
+button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: var(--radius);
+    background: var(--button-bg);
+    color: var(--button-text);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 32px;
+    border-radius: var(--radius);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.card * {
+    margin-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.title {
+    margin: var(--spacing);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.flex-row {
+    display: flex;
+    gap: 20px;
+}
+
+.between {
+    justify-content: space-between;
+}
+
+.flex-end {
+    justify-content: flex-end;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.bright {
+    color: var(--bright-link-color);
+}
+
+.fill-width {
+    width: 100%;
+}
+
+.fill-height {
+    height: 100%;
+}
