@@ -8,6 +8,6 @@ function login() {
     pass = document.getElementById('login-pass').value
 
     if (user == 'admin' && pass == 'admin') {
-        redirect("home.html")
+        redirect("index.html")
     }
 }
