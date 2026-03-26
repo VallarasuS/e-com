@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo - Forgot Password</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+</head>
+
+<body>
+
+    <main>
+
+        <div class="card" style="min-width: 400px; width: auto; max-width: 550px; margin: auto; margin-top: 30px;">
+
+            <div class="title text-center">
+                <h2>Neo</h2>
+                <div class="subtitle">Recover your account</div>
+            </div>
+
+            <form id="auth-form" name="auth-form" data-testid="auth-form" onsubmit="return false">
+                <input id="auth-user" data-testid="auth-user" autocomplete="off" type="text" name="email"
+                    placeholder="Email or Phone" required="" autofocus="">
+
+                <div class="flex-row">
+
+                    <select id="auth-dob-day" name="auth-dob-day" data-testid="auth-dob-day" autocomplete="off"
+                        placeholder="Day" required="" autofocus="">
+                        <option value="" disabled selected hidden>Day</option>
+                    </select>
+
+                    <select id="auth-dob-month" name="auth-dob-month" data-testid="auth-dob-month" placeholder="Month"
+                        required="">
+                        <option value="" disabled selected hidden>Month</option>
+                    </select>
+
+                    <input id="auth-dob-year" name="auth-dob-year" data-testid="auth-dob-year" placeholder="Year"
+                        required="" type="number" maxlength="4">
+                </div>
+
+                <div class="flex-row between flex-end">
+                    <button type="button" id="recover-button" name="recover-button" data-testid="recover-button"
+                        onclick="show()">Recover</button>
+                </div>
+            </form>
+
+            <div class="text-center"> &gt&gt&gt user & pass: admin &lt;&lt;&lt; </div>
+
+            <div class="text-center" style="margin: 30px;">
+                <a href="./login.html">
+                    <button style="background: var(--text-color);" type="button" id="recover-button"
+                        name="recover-button" data-testid="recover-button">
+                        Continue to Login</button>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        context = signup()
+        context.populate()
+
+        function show() {
+            context.show_alert("User Name and Password is 'admin'")
+        }
+    </script>
+
+</body>
+
+</html>

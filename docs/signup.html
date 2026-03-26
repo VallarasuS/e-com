@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo - Sign-up</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+</head>
+
+<body>
+
+    <main>
+
+        <div class="card" style="min-width: 400px; width: auto; max-width: 550px; margin: auto; margin-top: 30px;">
+
+            <div class="title text-center">
+                <h2>Neo</h2>
+                <div class="subtitle">create an account</div>
+            </div>
+
+            <form class="field-group hidden visible" id="signup-fname" name="signup-fname" data-testid="signup-fname"
+                onsubmit="return false">
+                <input id="signup-user" data-testid="signup-user" autocomplete="off" type="text"
+                    placeholder="First Name" required="" autofocus="">
+
+                <input id="signup-lname" name="signup-pass" data-testid="signup-pass" type="password"
+                    placeholder="Last Name" required="">
+            </form>
+
+            <form class="field-group hidden" id="signup-fname" name="signup-fname" data-testid="signup-fname"
+                onsubmit="return false">
+
+                <div class="flex-row">
+
+                    <select id="auth-dob-day" name="auth-dob-day" data-testid="auth-dob-day" autocomplete="off"
+                        placeholder="Day" required="" autofocus="">
+                        <option value="" disabled selected hidden>Day</option>
+                    </select>
+
+                    <select id="auth-dob-month" name="auth-dob-month" data-testid="auth-dob-month" placeholder="Month"
+                        required="">
+                        <option value="" disabled selected hidden>Month</option>
+                    </select>
+
+                    <input id="auth-dob-year" name="auth-dob-year" data-testid="auth-dob-year" placeholder="Year"
+                        required="">
+                </div>
+
+                <select id="signup-gender" name="signup-gender" data-testid="signup-gender" required>
+                    <option value="" disabled selected hidden>Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </form>
+
+            <form class="field-group hidden" id="signup-fname" name="signup-fname" data-testid="signup-fname"
+                onsubmit="return false">
+                <input id="signup-email" data-testid="signup-email" name="signup-email" autocomplete="off" type="text"
+                    placeholder="Email" required="" autofocus="">
+
+                <input id="signup-pass" data-testid="signup-pass" name="signup-pass" type="password"
+                    placeholder="Password" required="">
+
+                <input id="signup-pass" data-testid="signup-pass" name="signup-pass" type="password"
+                    placeholder="Confirm Password" required="">
+            </form>
+
+            <div class="flex-row flex-end">
+                <button type="button" id="signup-button-next" name="signup-button-next" data-testid="signup-button-next"
+                    class="hidden visible" onclick="next()">Next</button>
+            </div>
+
+            <form class="field-group hidden" id="signup-fname" name="signup-fname" data-testid="signup-fname"
+                onsubmit="return false">
+
+                <div class="text-center">
+                    <label>Account created successfully</label>
+                    <br>
+                    <label>Please <a href="./login.html">login</a> to proceed.</label>
+                </div>
+
+            </form>
+
+        </div>
+    </main>
+
+    <script>
+
+        context = signup()
+        context.populate()
+
+        function next() {
+            context.next()
+        }
+
+    </script>
+
+</body>
+
+</html>

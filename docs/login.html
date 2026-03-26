@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo - Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+</head>
+
+<body>
+
+    <main>
+
+        <div class="card" style="min-width: 400px; width: auto; max-width: 550px; margin: auto; margin-top: 30px;">
+
+            <div class="title text-center">
+                <h2>Neo</h2>
+                <div class="subtitle">sign-in to your account</div>
+            </div>
+
+            <form id="auth-form" name="auth-form" data-testid="auth-form" onsubmit="return false">
+                <input id="auth-user" data-testid="auth-user" autocomplete="off" type="text" name="email"
+                    placeholder="Email or Phone" required="" autofocus="">
+
+                <input id="auth-pass" name="auth-pass" data-testid="auth-pass" type="password" name="password"
+                    placeholder="Password" required="">
+
+                <a style="display: block;" id="auth-forgot" name="auth-forgot" data-testid="auth-forgot"
+                    href="./recover.html" class="text-right">Forgot
+                    password?</a>
+
+                <div class="flex-row between">
+                    <a id="auth-create" name="auth-create" data-testid="auth-create" href="./signup.html"
+                        class="create-link">Create account</a>
+                    <button type="button" id="auth-button" name="auth-button" data-testid="auth-button"
+                        onclick="login()">Login</button>
+                </div>
+            </form>
+
+            <div class="text-center"> &gt&gt&gt user & pass: admin &lt;&lt;&lt; </div>
+
+        </div>
+    </main>
+
+</body>
+
+</html>
