@@ -95,6 +95,7 @@ button:hover {
 }
 
 .card {
+    margin: var(--spacing);
     background: var(--card-bg);
     padding: 32px;
     border-radius: var(--radius);
@@ -154,4 +155,13 @@ button:hover {
 
 .banner {
     margin: 20px 0px;
+    height: 30vh;
+    background-color: #a10000;
+    border-radius: 5px;
+
+    img {
+        border-radius: 5px;
+        height: 100%;
+        width: auto;
+    }
 }

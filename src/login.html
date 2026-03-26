@@ -11,31 +11,34 @@
 
 <body>
 
-    <div class="card">
+    <main>
 
-        <div class="title text-center">
-            <h2>Neo</h2>
-            <div class="subtitle">to continue to your account</div>
-        </div>
+        <div class="card" style="min-width: 400px; width: auto; max-width: 550px; margin: auto; margin-top: 30px;">
 
-        <form id="loginForm" onsubmit="return false">
-            <input id="login-user" data-testid="login-user" autocomplete="off" type="text" name="email"
-                placeholder="Email or Phone" required="" autofocus="">
-
-            <input id="login-pass" data-testid="login-pass" type="password" name="password" placeholder="Password"
-                required="">
-
-            <a href="#" class="text-right">Forgot password?</a>
-
-            <div class="flex-row between">
-                <a href="#" class="create-link">Create account</a>
-                <button type="button" id="login-button" data-testid="login-button" onclick="login()">Next</button>
+            <div class="title text-center">
+                <h2>Neo</h2>
+                <div class="subtitle">sign-in to your account</div>
             </div>
-        </form>
 
-        <div class="text-center"> &gt&gt&gt user & pass: admin &lt;&lt;&lt; </div>
+            <form id="loginForm" onsubmit="return false">
+                <input id="login-user" data-testid="login-user" autocomplete="off" type="text" name="email"
+                    placeholder="Email or Phone" required="" autofocus="">
 
-    </div>
+                <input id="login-pass" data-testid="login-pass" type="password" name="password" placeholder="Password"
+                    required="">
+
+                <a href="#" class="text-right">Forgot password?</a>
+
+                <div class="flex-row between">
+                    <a href="#" class="create-link">Create account</a>
+                    <button type="button" id="login-button" data-testid="login-button" onclick="login()">Next</button>
+                </div>
+            </form>
+
+            <div class="text-center"> &gt&gt&gt user & pass: admin &lt;&lt;&lt; </div>
+
+        </div>
+    </main>
 
 </body>
 
