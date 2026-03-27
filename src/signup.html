@@ -27,26 +27,25 @@
 
                 <input id="signup-lname" name="signup-pass" data-testid="signup-pass" type="password"
                     placeholder="Last Name" required="">
-
-                <div class="flex-row flex-end">
-                    <button type="button" id="signup-button" name="signup-button" data-testid="signup-button"
-                        onclick="login()">Next</button>
-                </div>
             </form>
 
-            <form class="hidden" id="signup-fname" name="signup-fname" data-testid="signup-fname"
+            <form class="hidden visible" id="signup-fname" name="signup-fname" data-testid="signup-fname"
                 onsubmit="return false">
 
                 <div class="flex-row">
 
-                    <input id="signup-dob-day" name="signup-dob-day" data-testid="signup-dob-day" autocomplete="off"
-                        type="text" placeholder="Day" required="" autofocus="">
+                    <select id="signup-dob-day" name="signup-dob-day" data-testid="signup-dob-day" autocomplete="off"
+                        placeholder="Day" required="" autofocus="">
+                        <option>Day</option>
+                    </select>
 
-                    <input id="signup-dob-month" name="signup-dob-month" data-testid="signup-dob-month" type="password"
+                    <select id="signup-dob-month" name="signup-dob-month" data-testid="signup-dob-month"
                         placeholder="Month" required="">
+                        <option>Month</option>
+                    </select>
 
-                    <input id="signup-dob-year" name="signup-dob-year" data-testid="signup-dob-year" type="password"
-                        placeholder="Year" required="">
+                    <input id="signup-dob-year" name="signup-dob-year" data-testid="signup-dob-year" placeholder="Year"
+                        required="">
                 </div>
 
                 <select id="signup-gender" name="signup-gender" data-testid="signup-gender">
@@ -54,11 +53,6 @@
                     <option>Male</option>
                     <option>Female</option>
                 </select>
-
-                <div class="flex-row flex-end">
-                    <button type="button" id="signup-button" name="signup-button" data-testid="signup-button"
-                        onclick="login()">Next</button>
-                </div>
             </form>
 
             <form class="hidden visible" id="signup-fname" name="signup-fname" data-testid="signup-fname"
@@ -69,14 +63,25 @@
                 <input id="signup-pass" data-testid="signup-pass" name="signup-pass" type="password"
                     placeholder="Password" required="">
 
-                <div class="flex-row flex-end">
-                    <button type="button" id="signup-button" name="signup-button" data-testid="signup-button"
-                        onclick="login()">Signup</button>
-                </div>
+                <input id="signup-pass" data-testid="signup-pass" name="signup-pass" type="password"
+                    placeholder="Confirm Password" required="">
             </form>
+
+            <div class="flex-row flex-end">
+                <button type="button" id="signup-button" name="signup-button" data-testid="signup-button"
+                    onclick="login()">Signup</button>
+            </div>
 
         </div>
     </main>
+
+    <script>
+
+        context = signup()
+
+        context.populate()
+
+    </script>
 
 </body>
 
