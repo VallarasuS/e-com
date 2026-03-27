@@ -20,7 +20,7 @@
                 <div class="subtitle">create an account</div>
             </div>
 
-            <form class="hidden" id="signup-fname" name="signup-fname" data-testid="signup-fname"
+            <form class="field-group hidden visible" id="signup-fname" name="signup-fname" data-testid="signup-fname"
                 onsubmit="return false">
                 <input id="signup-user" data-testid="signup-user" autocomplete="off" type="text"
                     placeholder="First Name" required="" autofocus="">
@@ -29,33 +29,33 @@
                     placeholder="Last Name" required="">
             </form>
 
-            <form class="hidden visible" id="signup-fname" name="signup-fname" data-testid="signup-fname"
+            <form class="field-group hidden" id="signup-fname" name="signup-fname" data-testid="signup-fname"
                 onsubmit="return false">
 
                 <div class="flex-row">
 
-                    <select id="signup-dob-day" name="signup-dob-day" data-testid="signup-dob-day" autocomplete="off"
+                    <select id="auth-dob-day" name="auth-dob-day" data-testid="auth-dob-day" autocomplete="off"
                         placeholder="Day" required="" autofocus="">
-                        <option>Day</option>
+                        <option value="" disabled selected hidden>Day</option>
                     </select>
 
-                    <select id="signup-dob-month" name="signup-dob-month" data-testid="signup-dob-month"
-                        placeholder="Month" required="">
-                        <option>Month</option>
+                    <select id="auth-dob-month" name="auth-dob-month" data-testid="auth-dob-month" placeholder="Month"
+                        required="">
+                        <option value="" disabled selected hidden>Month</option>
                     </select>
 
-                    <input id="signup-dob-year" name="signup-dob-year" data-testid="signup-dob-year" placeholder="Year"
+                    <input id="auth-dob-year" name="auth-dob-year" data-testid="auth-dob-year" placeholder="Year"
                         required="">
                 </div>
 
-                <select id="signup-gender" name="signup-gender" data-testid="signup-gender">
-                    <option>Others</option>
+                <select id="signup-gender" name="signup-gender" data-testid="signup-gender" required>
+                    <option value="" disabled selected hidden>Gender</option>
                     <option>Male</option>
                     <option>Female</option>
                 </select>
             </form>
 
-            <form class="hidden visible" id="signup-fname" name="signup-fname" data-testid="signup-fname"
+            <form class="field-group hidden" id="signup-fname" name="signup-fname" data-testid="signup-fname"
                 onsubmit="return false">
                 <input id="signup-email" data-testid="signup-email" name="signup-email" autocomplete="off" type="text"
                     placeholder="Email" required="" autofocus="">
@@ -68,9 +68,20 @@
             </form>
 
             <div class="flex-row flex-end">
-                <button type="button" id="signup-button" name="signup-button" data-testid="signup-button"
-                    onclick="login()">Signup</button>
+                <button type="button" id="signup-button-next" name="signup-button-next" data-testid="signup-button-next"
+                    class="hidden visible" onclick="next()">Next</button>
             </div>
+
+            <form class="field-group hidden" id="signup-fname" name="signup-fname" data-testid="signup-fname"
+                onsubmit="return false">
+
+                <div class="text-center">
+                    <label>Account created successfully</label>
+                    <br>
+                    <label>Please <a href="./login.html">login</a> to proceed.</label>
+                </div>
+
+            </form>
 
         </div>
     </main>
@@ -78,8 +89,11 @@
     <script>
 
         context = signup()
-
         context.populate()
+
+        function next() {
+            context.next()
+        }
 
     </script>
 

@@ -74,6 +74,14 @@ select:focus {
     border-color: var(--primary-color);
 }
 
+select:invalid {
+    color: #7a7e82;
+}
+
+option:disabled {
+    color: #7a7e82;
+}
+
 main {
     width: 80%;
     margin: auto;
@@ -100,7 +108,6 @@ a {
     text-decoration: none;
     font-size: 13px;
     color: var(--link-color);
-    display: block;
     align-self: center;
 }
 

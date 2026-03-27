@@ -4,8 +4,8 @@ function redirect(path) {
 
 function login() {
 
-    user = document.getElementById('login-user').value
-    pass = document.getElementById('login-pass').value
+    user = document.getElementById('auth-user').value
+    pass = document.getElementById('auth-pass').value
 
     if (user == 'admin' && pass == 'admin') {
         redirect("index.html")
@@ -14,33 +14,60 @@ function login() {
 
 function signup() {
 
-    function next() {
+    current = 0
+    groups = document.getElementsByClassName("field-group")
+    length = groups?.length || 0
 
+    function next(reverse = false) {
+
+        groups[current].classList.toggle("visible")
+
+        if (reverse)
+            current--
+        if (current < 0)
+            current = length - 1
+        else {
+            current++
+            if (current >= length)
+                current = 0
+        }
+
+        if (current == length - 1) {
+            document.getElementById("signup-button-next").classList.toggle("visible")
+        }
+
+        groups[current].classList.toggle("visible")
     }
 
     function submit() {
 
     }
 
-    function populate() {
-        day_select = document.getElementById("signup-dob-day")
+    function createOption(id, start, stop, step) {
 
-        for (let day = 1; day <= 31; day++) {
+        el = document.getElementById(id)
+
+        for (let i = start; i <= stop; i = i + step) {
+
+            value = document.createTextNode(`${String(i).padStart(2, 0)}`)
+
             option = document.createElement("option")
-            value = document.createTextNode(`${String(day).padStart(2, 0)}`)
             option.appendChild(value)
-            day_select.appendChild(option)
-        }
+            option.setAttribute("value", i)
 
-        month_select = document.getElementById("signup-dob-month")
-
-        for (let day = 1; day <= 12; day++) {
-            option = document.createElement("option")
-            value = document.createTextNode(`${String(day).padStart(2, 0)}`)
-            option.appendChild(value)
-            month_select.appendChild(option)
+            el.appendChild(option)
         }
     }
 
-    return { next, submit, populate }
+    function populate() {
+
+        createOption("auth-dob-day", 1, 31, 1)
+        createOption("auth-dob-month", 1, 12, 1)
+    }
+
+    function show_alert(text) {
+        window.alert(text)
+    }
+
+    return { next, submit, populate, show_alert }
 }

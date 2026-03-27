@@ -20,20 +20,21 @@
                 <div class="subtitle">sign-in to your account</div>
             </div>
 
-            <form id="login-form" name="login-form" data-testid="login-form" onsubmit="return false">
-                <input id="login-user" data-testid="login-user" autocomplete="off" type="text" name="email"
+            <form id="auth-form" name="auth-form" data-testid="auth-form" onsubmit="return false">
+                <input id="auth-user" data-testid="auth-user" autocomplete="off" type="text" name="email"
                     placeholder="Email or Phone" required="" autofocus="">
 
-                <input id="login-pass" name="login-pass" data-testid="login-pass" type="password" name="password"
+                <input id="auth-pass" name="auth-pass" data-testid="auth-pass" type="password" name="password"
                     placeholder="Password" required="">
 
-                <a id="login-forgot" name="login-forgot" data-testid="login-forgot" href="#" class="text-right">Forgot
+                <a style="display: block;" id="auth-forgot" name="auth-forgot" data-testid="auth-forgot"
+                    href="./recover.html" class="text-right">Forgot
                     password?</a>
 
                 <div class="flex-row between">
-                    <a id="login-create" name="login-create" data-testid="login-create" href="./signup.html"
+                    <a id="auth-create" name="auth-create" data-testid="auth-create" href="./signup.html"
                         class="create-link">Create account</a>
-                    <button type="button" id="login-button" name="login-button" data-testid="login-button"
+                    <button type="button" id="auth-button" name="auth-button" data-testid="auth-button"
                         onclick="login()">Next</button>
                 </div>
             </form>
