@@ -10,6 +10,13 @@ function login() {
     if (user == 'admin' && pass == 'admin') {
         redirect("index.html")
     }
+    else {
+        show_alert("Invalid user name or password")
+    }
+}
+
+function show_alert(text) {
+    window.alert(text)
 }
 
 function signup() {
@@ -63,10 +70,6 @@ function signup() {
 
         createOption("auth-dob-day", 1, 31, 1)
         createOption("auth-dob-month", 1, 12, 1)
-    }
-
-    function show_alert(text) {
-        window.alert(text)
     }
 
     return { next, submit, populate, show_alert }

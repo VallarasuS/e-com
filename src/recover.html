@@ -42,11 +42,19 @@
 
                 <div class="flex-row between flex-end">
                     <button type="button" id="recover-button" name="recover-button" data-testid="recover-button"
-                        onclick="show_alert()">Recover</button>
+                        onclick="show()">Recover</button>
                 </div>
             </form>
 
             <div class="text-center"> &gt&gt&gt user & pass: admin &lt;&lt;&lt; </div>
+
+            <div class="text-center" style="margin: 30px;">
+                <a href="./login.html">
+                    <button style="background: var(--text-color);" type="button" id="recover-button"
+                        name="recover-button" data-testid="recover-button">
+                        Continue to Login</button>
+                </a>
+            </div>
 
         </div>
     </main>
@@ -55,7 +63,7 @@
         context = signup()
         context.populate()
 
-        function show_alert() {
+        function show() {
             context.show_alert("User Name and Password is 'admin'")
         }
     </script>
