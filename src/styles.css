@@ -131,6 +131,7 @@ button:hover {
     padding: 32px;
     border-radius: var(--radius);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    margin-bottom: var(--spacing);
 }
 
 .card * {
@@ -163,6 +164,11 @@ button:hover {
     justify-content: flex-end;
 }
 
+
+.flex-start {
+    justify-content: flex-start;
+}
+
 .flex-col {
     display: flex;
     flex-direction: column;
@@ -186,14 +192,14 @@ button:hover {
 
 .banner {
     margin: 20px 0px;
-    height: 30vh;
+    height: 100%;
     background-color: #a10000;
     border-radius: 5px;
 
     img {
         border-radius: 5px;
-        height: 100%;
-        width: auto;
+        height: auto;
+        width: 100%;
     }
 }
 
@@ -203,4 +209,70 @@ button:hover {
 
 .visible {
     display: inherit;
+}
+
+.landing-cards {
+
+    .card {
+        background: linear-gradient(to bottom, #16181c, #060606);
+    }
+
+    .card:hover {
+        transform: scale(0.95) rotate(0deg) translate(0px, 0px) skewX(0deg);
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+        filter: brightness(0.9);
+    }
+
+
+    div:has(img) {
+        container-type: inline-size;
+    }
+
+    label {
+        position: absolute;
+        z-index: 10;
+        display: inline;
+        font-size: clamp(12px, 2vw, 24px);
+        text-wrap: wrap;
+    }
+
+    img {
+        position: relative;
+        align-self: center;
+        text-align: center;
+        z-index: 1;
+        width: 100%;
+        height: auto;
+        margin-top: 40px;
+    }
+
+    @container (max-width: 200px) {
+        .label {
+            display: none;
+        }
+    }
+}
+
+.footer {
+
+    width: 80%;
+    margin: auto;
+
+    .footer-label {
+        display: block;
+        margin-bottom: 30px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .footer-story {
+        margin: auto;
+        padding: 20px;
+        width: 80%;
+        text-align: justify;
+    }
+
+    .footer-menu {
+        margin: auto;
+    }
 }
