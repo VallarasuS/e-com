@@ -20,18 +20,21 @@
                 <div class="subtitle">sign-in to your account</div>
             </div>
 
-            <form id="loginForm" onsubmit="return false">
+            <form id="login-form" name="login-form" data-testid="login-form" onsubmit="return false">
                 <input id="login-user" data-testid="login-user" autocomplete="off" type="text" name="email"
                     placeholder="Email or Phone" required="" autofocus="">
 
-                <input id="login-pass" data-testid="login-pass" type="password" name="password" placeholder="Password"
-                    required="">
+                <input id="login-pass" name="login-pass" data-testid="login-pass" type="password" name="password"
+                    placeholder="Password" required="">
 
-                <a href="#" class="text-right">Forgot password?</a>
+                <a id="login-forgot" name="login-forgot" data-testid="login-forgot" href="#" class="text-right">Forgot
+                    password?</a>
 
                 <div class="flex-row between">
-                    <a href="#" class="create-link">Create account</a>
-                    <button type="button" id="login-button" data-testid="login-button" onclick="login()">Next</button>
+                    <a id="login-create" name="login-create" data-testid="login-create" href="./signup.html"
+                        class="create-link">Create account</a>
+                    <button type="button" id="login-button" name="login-button" data-testid="login-button"
+                        onclick="login()">Next</button>
                 </div>
             </form>
 

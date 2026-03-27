@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo - Sign-up</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+</head>
+
+<body>
+
+    <main>
+
+        <div class="card" style="min-width: 400px; width: auto; max-width: 550px; margin: auto; margin-top: 30px;">
+
+            <div class="title text-center">
+                <h2>Neo</h2>
+                <div class="subtitle">create an account</div>
+            </div>
+
+            <form class="hidden" id="signup-fname" name="signup-fname" data-testid="signup-fname"
+                onsubmit="return false">
+                <input id="signup-user" data-testid="signup-user" autocomplete="off" type="text"
+                    placeholder="First Name" required="" autofocus="">
+
+                <input id="signup-lname" name="signup-pass" data-testid="signup-pass" type="password"
+                    placeholder="Last Name" required="">
+
+                <div class="flex-row flex-end">
+                    <button type="button" id="signup-button" name="signup-button" data-testid="signup-button"
+                        onclick="login()">Next</button>
+                </div>
+            </form>
+
+            <form class="hidden" id="signup-fname" name="signup-fname" data-testid="signup-fname"
+                onsubmit="return false">
+
+                <div class="flex-row">
+
+                    <input id="signup-dob-day" name="signup-dob-day" data-testid="signup-dob-day" autocomplete="off"
+                        type="text" placeholder="Day" required="" autofocus="">
+
+                    <input id="signup-dob-month" name="signup-dob-month" data-testid="signup-dob-month" type="password"
+                        placeholder="Month" required="">
+
+                    <input id="signup-dob-year" name="signup-dob-year" data-testid="signup-dob-year" type="password"
+                        placeholder="Year" required="">
+                </div>
+
+                <select id="signup-gender" name="signup-gender" data-testid="signup-gender">
+                    <option>Others</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+
+                <div class="flex-row flex-end">
+                    <button type="button" id="signup-button" name="signup-button" data-testid="signup-button"
+                        onclick="login()">Next</button>
+                </div>
+            </form>
+
+            <form class="hidden visible" id="signup-fname" name="signup-fname" data-testid="signup-fname"
+                onsubmit="return false">
+                <input id="signup-email" data-testid="signup-email" name="signup-email" autocomplete="off" type="text"
+                    placeholder="Email" required="" autofocus="">
+
+                <input id="signup-pass" data-testid="signup-pass" name="signup-pass" type="password"
+                    placeholder="Password" required="">
+
+                <div class="flex-row flex-end">
+                    <button type="button" id="signup-button" name="signup-button" data-testid="signup-button"
+                        onclick="login()">Signup</button>
+                </div>
+            </form>
+
+        </div>
+    </main>
+
+</body>
+
+</html>
