@@ -1,3 +1,39 @@
+## **Table of Contents**
+
+* [Product Requirement Document (PRD)](#product-requirement-document-prd)
+
+  * [1. Product Overview](#1-product-overview)
+  * [2. Business Objectives](#2-business-objectives)
+  * [3. Key Features & Requirements](#3-key-features--requirements)
+
+    * [3.1 User Management & Authentication](#31-user-management--authentication)
+    * [3.2 Product Catalog & Browsing](#32-product-catalog--browsing)
+    * [3.3 Shopping Cart & Checkout](#33-shopping-cart--checkout)
+    * [3.4 Order Management](#34-order-management)
+    * [3.5 Customer Experience & Personalization](#35-customer-experience--personalization)
+    * [3.6 Admin & Seller Features](#36-admin--seller-features-backend)
+    * [3.7 Technical & Non-Functional Requirements](#37-technical--non-functional-requirements)
+    * [3.8 Marketing & Engagement](#38-marketing--engagement)
+
+* [List of Pages for Each Requirement](#list-of-pages-for-each-requirement)
+
+  * [1. User Management & Authentication (Pages)](#1-user-management--authentication-1)
+  * [2. Product Catalog & Browsing (Pages)](#2-product-catalog--browsing-1)
+  * [3. Shopping Cart & Checkout (Pages)](#3-shopping-cart--checkout-1)
+  * [4. Order Management (Pages)](#4-order-management-1)
+  * [5. Customer Experience & Personalization (Pages)](#5-customer-experience--personalization-1)
+  * [6. Marketing & Engagement (Pages)](#6-marketing--engagement-1)
+  * [7. Static / Informational Pages](#7-static--informational-pages)
+  * [8. Admin / Backend Pages](#8-admin--backend-pages-not-visible-to-customers)
+
+* [Page Hierarchy Summary](#page-hierarchy-summary)
+
+  * [Main Navigation](#main-navigation)
+  * [Footer Links](#footer-links)
+
+---
+
+
 ### **Product Requirement Document (PRD)**  
 **Product Name:** Neo - Modern E-Commerce Platform  
 **Version:** 1.0  
@@ -93,80 +129,80 @@ Neo is a full-featured, scalable, and user-friendly e-commerce website that allo
 ### **List of Pages for Each Requirement**
 
 #### **1. User Management & Authentication**
-- Homepage (with login prompt for personalized content)
-- Login Page
-- Registration / Sign-up Page
-- Forgot Password Page
-- Reset Password Page
-- User Profile Page
-- My Addresses Page
-- Saved Payment Methods Page
-- Wishlist Page
+- [ ] Homepage (with login prompt for personalized content)
+- [x] Login Page
+- [x] Registration / Sign-up Page
+- [x] Forgot Password Page
+- [ ] Reset Password Page
+- [ ] User Profile Page
+- [ ] My Addresses Page
+- [ ] Saved Payment Methods Page
+- [ ] Wishlist Page
 
 #### **2. Product Catalog & Browsing**
-- **Homepage** (Hero banner, featured categories, bestsellers, deals)
-- Shop / All Products Page
-- Category Listing Page (e.g., /fashion, /electronics)
-- Sub-category Listing Page
-- Product Detail Page (PDP)
-- Search Results Page
-- Product Comparison Page
-- Brand Listing Page
-- Brand Detail Page
+- [ ] **Homepage** (Hero banner, featured categories, bestsellers, deals)
+- [ ] Shop / All Products Page
+- [ ] Category Listing Page (e.g., /fashion, /electronics)
+- [ ] Sub-category Listing Page
+- [ ] Product Detail Page (PDP)
+- [ ] Search Results Page
+- [ ] Product Comparison Page
+- [ ] Brand Listing Page
+- [ ] Brand Detail Page
 
 #### **3. Shopping Cart & Checkout**
-- Shopping Cart Page
+- [ ] Shopping Cart Page
 - Checkout Page (multi-step)
-  - Step 1: Cart Review
-  - Step 2: Shipping Address
-  - Step 3: Shipping Method
-  - Step 4: Payment Method
-  - Step 5: Order Review & Confirmation
-- Order Success / Thank You Page
+  - [ ] Step 1: Cart Review
+  - [ ] Step 2: Shipping Address
+  - [ ] Step 3: Shipping Method
+  - [ ] Step 4: Payment Method
+  - [ ] Step 5: Order Review & Confirmation
+- [ ] Order Success / Thank You Page
 
 #### **4. Order Management**
-- My Orders Page
-- Order Detail Page
-- Order Tracking Page
-- Return / Refund Request Page
-- Cancellation Request Page
+- [ ] My Orders Page
+- [ ] Order Detail Page
+- [ ] Order Tracking Page
+- [ ] Return / Refund Request Page
+- [ ] Cancellation Request Page
 
 #### **5. Customer Experience & Personalization**
-- Product Detail Page (Reviews + Q&A section)
-- Recommendations Section (on Homepage & PDP)
-- Recently Viewed Products Page / Section
-- Live Chat Widget (on all pages)
-- Customer Support / Contact Us Page
+- [ ] Product Detail Page (Reviews + Q&A section)
+- [ ] Recommendations Section (on Homepage & PDP)
+- [ ] Recently Viewed Products Page / Section
+- [ ] Live Chat Widget (on all pages)
+- [ ] Customer Support / Contact Us Page
 
 #### **6. Marketing & Engagement**
-- Homepage (promotional banners, flash sales)
-- Deals / Offers Page
-- Newsletter Subscription (Footer + Pop-up)
-- Blog / Articles Listing Page
-- Blog Detail Page
+- [ ] Homepage (promotional banners, flash sales)
+- [ ] Deals / Offers Page
+- [ ] Newsletter Subscription (Footer + Pop-up)
+- [ ] Blog / Articles Listing Page
+- [ ] Blog Detail Page
 
 #### **7. Static / Informational Pages**
-- About Us Page
-- Contact Us Page
-- FAQ Page
-- Shipping Policy Page
-- Returns & Refund Policy Page
-- Privacy Policy Page
-- Terms & Conditions Page
-- Size Guide Page (category-specific)
+- [ ] About Us Page
+- [ ] Contact Us Page
+- [ ] FAQ Page
+- [ ] Shipping Policy Page
+- [ ] Returns & Refund Policy Page
+- [ ] Privacy Policy Page
+- [ ] Terms & Conditions Page
+- [ ] Size Guide Page (category-specific)
 
 #### **8. Admin / Backend Pages** (Not visible to customers)
-- Admin Login Page
-- Admin Dashboard
-- Products Management (List + Add/Edit)
-- Categories Management
-- Brands Management
-- Orders Management
-- Customers Management
-- Promotions / Coupons Management
-- Inventory Management
-- Analytics / Reports Dashboard
-- Content Management System (CMS) Pages
+- [ ] Admin Login Page
+- [ ] Admin Dashboard
+- [ ] Products Management (List + Add/Edit)
+- [ ] Categories Management
+- [ ] Brands Management
+- [ ] Orders Management
+- [ ] Customers Management
+- [ ] Promotions / Coupons Management
+- [ ] Inventory Management
+- [ ] Analytics / Reports Dashboard
+- [ ] Content Management System (CMS) Pages
 
 ---
 
