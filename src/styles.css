@@ -134,7 +134,7 @@ button:hover {
     margin-bottom: var(--spacing);
 }
 
-.card * {
+.card form * {
     margin-bottom: 10px;
     margin-bottom: 10px;
 }
@@ -164,6 +164,9 @@ button:hover {
     justify-content: flex-end;
 }
 
+.flex-wrap {
+    flex-wrap: wrap;
+}
 
 .flex-start {
     justify-content: flex-start;
@@ -188,6 +191,10 @@ button:hover {
 
 .height-60 {
     height: 60vh;
+}
+
+.width-30 {
+    width: 30%;
 }
 
 .banner {
@@ -223,7 +230,6 @@ button:hover {
         filter: brightness(0.9);
     }
 
-
     div:has(img) {
         container-type: inline-size;
     }
@@ -237,10 +243,6 @@ button:hover {
     }
 
     img {
-        position: relative;
-        align-self: center;
-        text-align: center;
-        z-index: 1;
         width: 100%;
         height: auto;
         margin-top: 40px;
@@ -250,6 +252,19 @@ button:hover {
         .label {
             display: none;
         }
+    }
+}
+
+.cat-cards {
+
+    .card:hover {
+        transform: scale(0.95) rotate(0deg) translate(0px, 0px) skewX(0deg);
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+        filter: brightness(0.9);
+    }
+
+    img {
+        width: 100%;
     }
 }
 
@@ -274,5 +289,19 @@ button:hover {
 
     .footer-menu {
         margin: auto;
+    }
+}
+
+.cat-filter {
+    width: 30%;
+
+    ul {
+        list-style: none;
+        padding: 0px;
+    }
+
+    input {
+        width: unset;
+        margin-right: 10px;
     }
 }
