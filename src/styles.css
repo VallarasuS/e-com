@@ -85,6 +85,7 @@ option:disabled {
 main {
     width: 80%;
     margin: auto;
+    max-width: 100%;
 }
 
 nav {
@@ -222,10 +223,16 @@ button:hover {
     display: inherit;
 }
 
+img {
+    max-width: 100%;
+    width: 100%;
+}
+
 .landing-cards {
 
     .card {
         background: linear-gradient(to bottom, #16181c, #060606);
+        max-width: 30% !important;
     }
 
     .card:hover {
@@ -250,8 +257,7 @@ button:hover {
         width: 100%;
         height: auto;
         margin-top: 40px;
-        display: block;
-        object-fit: cover;
+        max-width: 100% !important;
     }
 
     @container (max-width: 200px) {
