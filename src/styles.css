@@ -250,6 +250,8 @@ button:hover {
         width: 100%;
         height: auto;
         margin-top: 40px;
+        display: block;
+        object-fit: cover;
     }
 
     @container (max-width: 200px) {
