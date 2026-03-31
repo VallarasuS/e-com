@@ -107,7 +107,7 @@ h4 {
 a {
     text-decoration: none;
     font-size: 13px;
-    color: var(--link-color);
+    color: inherit;
     align-self: center;
 }
 
@@ -175,6 +175,10 @@ button:hover {
 .flex-col {
     display: flex;
     flex-direction: column;
+}
+
+.gap-10 {
+    gap: 10px;
 }
 
 .bright {
@@ -246,6 +250,8 @@ button:hover {
         width: 100%;
         height: auto;
         margin-top: 40px;
+        display: block;
+        object-fit: cover;
     }
 
     @container (max-width: 200px) {
