@@ -142,9 +142,9 @@ Neo is a full-featured, scalable, and user-friendly e-commerce website that allo
 #### **2. Product Catalog & Browsing**
 - [x] **Homepage** (Hero banner, featured categories, bestsellers, deals)
 - [ ] Shop / All Products Page
-- [ ] Category Listing Page (e.g., /fashion, /electronics)
+- [x] Category Listing Page (e.g., /fashion, /electronics)
 - [ ] Sub-category Listing Page
-- [ ] Product Detail Page (PDP)
+- [x] Product Detail Page (PDP)
 - [ ] Search Results Page
 - [ ] Product Comparison Page
 - [ ] Brand Listing Page
