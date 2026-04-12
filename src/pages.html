@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEO - All Pages Sitemap</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .sitemap-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .category-card {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .category-card h2 {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .page-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .page-item {
+            width: calc(33.333% - 15px);
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #777;
+        }
+
+        .page-item a {
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+        }
+
+        .page-item a:hover {
+            color: #007bff;
+        }
+
+        @media (max-width: 768px) {
+            .page-item {
+                width: calc(50% - 15px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="flex-row">
+            <div class="flex-row between fill-width" style="margin: auto;">
+                <div class="flex-row" style="align-items: center;">
+                    <a id="nav-home" name="nav-home" data-testid="nav-home" style="font-weight: bold; font-size: 18px;"
+                        href="./index.html">NEO</a>
+                </div>
+                <div class="flex-row flex-end" style="align-items: center">
+                    <a href="./index.html">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="sitemap-container">
+        <div class="text-center" style="margin-bottom: 40px;">
+            <h1>Site Index</h1>
+            <p style="color: #666;">A complete categorized list of all pages available on NEO.</p>
+        </div>
+
+        <div class="flex-row flex-wrap" style="gap: 20px;">
+
+            <!-- Main & Corporate -->
+            <div class="card category-card">
+                <h2>Main & Corporate</h2>
+                <ul class="page-list">
+                    <li class="page-item"><a href="index.html">Home</a></li>
+                    <li class="page-item"><a href="about.html">About Us</a></li>
+                    <li class="page-item"><a href="contact.html">Contact Us</a></li>
+                    <li class="page-item"><a href="team.html">Our Team</a></li>
+                    <li class="page-item"><a href="careers.html">Careers</a></li>
+                    <li class="page-item"><a href="partners.html">Partners</a></li>
+                    <li class="page-item"><a href="press.html">Press</a></li>
+                    <li class="page-item"><a href="affiliates.html">Affiliates</a></li>
+                    <li class="page-item"><a href="store-locations.html">Store Locations</a></li>
+                    <li class="page-item"><a href="blogs.html">Blogs</a></li>
+                    <li class="page-item"><a href="blog-detail.html">Blog Detail</a></li>
+                    <li class="page-item"><a href="sitemap.xml">XML Sitemap</a></li>
+                </ul>
+            </div>
+
+            <!-- Shopping Experience -->
+            <div class="card category-card">
+                <h2>Shopping Experience</h2>
+                <ul class="page-list">
+                    <li class="page-item"><a href="shop.html">Shop All</a></li>
+                    <li class="page-item"><a href="category.html">Category Page</a></li>
+                    <li class="page-item"><a href="sub-category.html">Sub-Category Page</a></li>
+                    <li class="page-item"><a href="product.html">Product Detail</a></li>
+                    <li class="page-item"><a href="deals.html">Deals & Offers</a></li>
+                    <li class="page-item"><a href="best-sellers.html">Best Sellers</a></li>
+                    <li class="page-item"><a href="new-arrivals.html">New Arrivals</a></li>
+                    <li class="page-item"><a href="brands.html">All Brands</a></li>
+                    <li class="page-item"><a href="brand.html">Brand Page</a></li>
+                    <li class="page-item"><a href="search.html">Search Results</a></li>
+                    <li class="page-item"><a href="comparison.html">Product Comparison</a></li>
+                    <li class="page-item"><a href="wishlist.html">Wishlist</a></li>
+                </ul>
+            </div>
+
+            <!-- Checkout & Orders -->
+            <div class="card category-card">
+                <h2>Cart & Orders</h2>
+                <ul class="page-list">
+                    <li class="page-item"><a href="cart.html">Shopping Cart</a></li>
+                    <li class="page-item"><a href="checkout.html">Checkout</a></li>
+                    <li class="page-item"><a href="success.html">Order Success</a></li>
+                    <li class="page-item"><a href="orders.html">My Orders</a></li>
+                    <li class="page-item"><a href="order-detail.html">Order Details</a></li>
+                    <li class="page-item"><a href="order-tracking.html">Track Order</a></li>
+                    <li class="page-item"><a href="cancel-request.html">Cancel Order</a></li>
+                    <li class="page-item"><a href="return-request.html">Return Request</a></li>
+                </ul>
+            </div>
+
+            <!-- User Account -->
+            <div class="card category-card">
+                <h2>User Account</h2>
+                <ul class="page-list">
+                    <li class="page-item"><a href="login.html">Login</a></li>
+                    <li class="page-item"><a href="signup.html">Sign Up</a></li>
+                    <li class="page-item"><a href="recover.html">Recover Account</a></li>
+                    <li class="page-item"><a href="reset-password.html">Reset Password</a></li>
+                    <li class="page-item"><a href="profile.html">My Profile</a></li>
+                    <li class="page-item"><a href="addresses.html">Saved Addresses</a></li>
+                    <li class="page-item"><a href="payments.html">Payment Methods</a></li>
+                </ul>
+            </div>
+
+            <!-- Support & Policies -->
+            <div class="card category-card">
+                <h2>Support & Policies</h2>
+                <ul class="page-list">
+                    <li class="page-item"><a href="faq.html">FAQ</a></li>
+                    <li class="page-item"><a href="terms.html">Terms of Service</a></li>
+                    <li class="page-item"><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li class="page-item"><a href="refund-policy.html">Refund Policy</a></li>
+                    <li class="page-item"><a href="shipping-policy.html">Shipping Policy</a></li>
+                    <li class="page-item"><a href="size-guide.html">Size Guide</a></li>
+                    <li class="page-item"><a href="call-us.html">Call Us</a></li>
+                    <li class="page-item"><a href="chat.html">Live Chat</a></li>
+                    <li class="page-item"><a href="raise-ticket.html">Raise a Ticket</a></li>
+                    <li class="page-item"><a href="attributions.html">Attributions</a></li>
+                </ul>
+            </div>
+
+            <!-- Admin Panel -->
+            <div class="card category-card">
+                <h2>Admin Resources</h2>
+                <ul class="page-list">
+                    <li class="page-item"><a href="admin-login.html">Admin Login</a></li>
+                    <li class="page-item"><a href="admin-dashboard.html">Admin Dashboard</a></li>
+                    <li class="page-item"><a href="admin-products.html">Manage Products</a></li>
+                    <li class="page-item"><a href="admin-categories.html">Manage Categories</a></li>
+                    <li class="page-item"><a href="admin-brands.html">Manage Brands</a></li>
+                    <li class="page-item"><a href="admin-orders.html">Manage Orders</a></li>
+                    <li class="page-item"><a href="admin-customers.html">Manage Customers</a></li>
+                    <li class="page-item"><a href="admin-inventory.html">Manage Inventory</a></li>
+                    <li class="page-item"><a href="admin-promotions.html">Promotions</a></li>
+                    <li class="page-item"><a href="admin-analytics.html">Analytics</a></li>
+                    <li class="page-item"><a href="admin-cms.html">CMS / Content</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </main>
+
+    <div class="footer">
+        <hr style="margin: 50px 0px; border-color: black;">
+        <div class="text-center" style="margin-bottom: 20px;">
+            <p>&copy; 2026 NEO E-Commerce. All rights reserved.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
