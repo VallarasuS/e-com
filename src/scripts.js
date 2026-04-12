@@ -252,6 +252,15 @@ function applyFilters() {
     
     let filtered = [...allProducts];
     
+    let searchInput = document.getElementById('search-query');
+    if (searchInput && searchInput.value.trim() !== '') {
+        let query = searchInput.value.trim().toLowerCase();
+        filtered = filtered.filter(p => 
+            p.name.toLowerCase().includes(query) || 
+            (p.description && p.description.toLowerCase().includes(query))
+        );
+    }
+    
     const path = window.location.pathname;
     if (path.includes('deals.html')) filtered = filtered.filter(p => p.isDeal);
     if (path.includes('new-arrivals.html')) filtered = filtered.filter(p => p.isNewArrival);

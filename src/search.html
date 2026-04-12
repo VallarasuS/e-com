@@ -58,7 +58,7 @@
     <main style="margin-top: 30px;">
         <div class="search-area">
             <h2>Find Products</h2>
-            <form id="search-form" name="search-form" data-testid="search-form" onsubmit="event.preventDefault(); document.getElementById('search-results').style.display = 'block';">
+            <form id="search-form" name="search-form" data-testid="search-form" onsubmit="event.preventDefault(); document.getElementById('search-results').style.display = 'block'; applyFilters();">
                 <input type="text" id="search-query" name="search-query" data-testid="search-query" class="search-input" placeholder="Search for electronics, fashion, toys..." autocomplete="off">
                 <button type="submit" id="search-submit" name="search-submit" data-testid="search-submit" class="search-btn">Search</button>
             </form>
