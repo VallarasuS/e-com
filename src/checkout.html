@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,53 @@
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js"></script>
     <style>
-        .step-container { display: none; }
-        .step-active { display: block; }
-        .checkout-layout { display: flex; gap: 30px; margin-top: 30px; }
-        .checkout-steps { flex-grow: 1; }
-        .checkout-summary { width: 350px; flex-shrink: 0; }
-        .iframe-container { border: 1px solid var(--border-color); border-radius: var(--radius); padding: 10px; background: #222; }
-        .loading-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 100; color: white; text-align: center; padding-top: 20%; font-size: 24px; }
+        .step-container {
+            display: none;
+        }
+
+        .step-active {
+            display: block;
+        }
+
+        .checkout-layout {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .checkout-steps {
+            flex-grow: 1;
+        }
+
+        .checkout-summary {
+            width: 350px;
+            flex-shrink: 0;
+        }
+
+        .iframe-container {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 10px;
+            background: #222;
+        }
+
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 100;
+            color: white;
+            text-align: center;
+            padding-top: 20%;
+            font-size: 24px;
+        }
     </style>
 </head>
+
 <body>
 
     <nav>
@@ -23,8 +62,14 @@
         <div class="flex-row">
             <div class="flex-row between fill-width" style="margin: auto;">
                 <div class="flex-row" style="align-items: center;">
-                    <a id="nav-home" name="nav-home" data-testid="nav-home" style="font-weight: bold; font-size: 18px;" href="./index.html">NEO</a>
-                    <a id="nav-deals" name="nav-deals" data-testid="nav-deals" class="primary" href="./shop.html">Deals</a>
+                    <a id="nav-home" name="nav-home" data-testid="nav-home" style="font-weight: bold; font-size: 18px;"
+                        href="./index.html">NEO</a>
+                    <a id="nav-deals" name="nav-deals" data-testid="nav-deals" class="primary"
+                        href="./deals.html">Deals</a>
+                    <a id="nav-new-arrivals" name="nav-new-arrivals" data-testid="nav-new-arrivals"
+                        href="./new-arrivals.html">New Arrivals</a>
+                    <a id="nav-best-sellers" name="nav-best-sellers" data-testid="nav-best-sellers" class="primary"
+                        href="./best-sellers.html">Best Sellers</a>
                 </div>
             </div>
         </div>
@@ -36,22 +81,29 @@
 
     <main>
         <h2>Checkout</h2>
-        
+
         <div class="checkout-layout">
             <div class="checkout-steps card">
-                
+
                 <!-- STEP 1: SHIPPING ADDRESS -->
                 <div id="step-1" class="step-container step-active" data-testid="step-shipping">
                     <h3>1. Shipping Address</h3>
-                    <form id="form-shipping" name="form-shipping" data-testid="form-shipping" onsubmit="event.preventDefault(); nextStep(2);">
-                        <input type="text" id="ship-name" name="ship-name" data-testid="ship-name" placeholder="Full Name" required>
-                        <input type="text" id="ship-address" name="ship-address" data-testid="ship-address" placeholder="Address Line 1" required>
-                        <input type="text" id="ship-city" name="ship-city" data-testid="ship-city" placeholder="City" required>
+                    <form id="form-shipping" name="form-shipping" data-testid="form-shipping"
+                        onsubmit="event.preventDefault(); nextStep(2);">
+                        <input type="text" id="ship-name" name="ship-name" data-testid="ship-name"
+                            placeholder="Full Name" required>
+                        <input type="text" id="ship-address" name="ship-address" data-testid="ship-address"
+                            placeholder="Address Line 1" required>
+                        <input type="text" id="ship-city" name="ship-city" data-testid="ship-city" placeholder="City"
+                            required>
                         <div class="flex-row">
-                            <input type="text" id="ship-state" name="ship-state" data-testid="ship-state" placeholder="State/Province" required>
-                            <input type="text" id="ship-zip" name="ship-zip" data-testid="ship-zip" placeholder="Zip / Postal Code" required>
+                            <input type="text" id="ship-state" name="ship-state" data-testid="ship-state"
+                                placeholder="State/Province" required>
+                            <input type="text" id="ship-zip" name="ship-zip" data-testid="ship-zip"
+                                placeholder="Zip / Postal Code" required>
                         </div>
-                        <button type="submit" id="btn-next-payment" name="btn-next-payment" data-testid="btn-next-payment" style="margin-top: 20px;">Continue to Payment</button>
+                        <button type="submit" id="btn-next-payment" name="btn-next-payment"
+                            data-testid="btn-next-payment" style="margin-top: 20px;">Continue to Payment</button>
                     </form>
                 </div>
 
@@ -59,12 +111,12 @@
                 <div id="step-2" class="step-container" data-testid="step-payment">
                     <h3>2. Payment Information</h3>
                     <p>Enter your mocked payment details below. Hosted securely.</p>
-                    
+
                     <div class="iframe-container">
                         <!-- IFRAME FOR AUTOMATION CONTEXT SWITCHING -->
                         <iframe id="payment-iframe" name="payment-iframe" data-testid="payment-iframe" srcdoc="
                             <style>body { color: white; font-family: monospace; background: #222; } input { width: 90%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #555; }</style>
-                            <form id='iframe-payment-form' data-testid='iframe-payment-form'>
+                            <form id='iframe-payment-form' data-testid='iframe-payment-form' style='display: flex; flex-direction: column; gap: 5px'>
                                 <label>Card Number</label>
                                 <input type='text' id='cc-number' name='cc-number' data-testid='cc-number' placeholder='XXXX-XXXX-XXXX-XXXX'>
                                 <label>Expiry Date</label>
@@ -76,8 +128,11 @@
                     </div>
 
                     <div style="margin-top: 20px;">
-                        <button type="button" id="btn-back-shipping" name="btn-back-shipping" data-testid="btn-back-shipping" onclick="nextStep(1)" style="margin-right: 10px; background: var(--border-color)">Back</button>
-                        <button type="button" id="btn-next-review" name="btn-next-review" data-testid="btn-next-review" onclick="nextStep(3)">Review Order</button>
+                        <button type="button" id="btn-back-shipping" name="btn-back-shipping"
+                            data-testid="btn-back-shipping" onclick="nextStep(1)"
+                            style="margin-right: 10px; background: var(--border-color)">Back</button>
+                        <button type="button" id="btn-next-review" name="btn-next-review" data-testid="btn-next-review"
+                            onclick="nextStep(3)">Review Order</button>
                     </div>
                 </div>
 
@@ -86,19 +141,24 @@
                     <h3>3. Review Order</h3>
                     <p>Please review your details before placing your order.</p>
 
-                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: var(--radius); margin-bottom: 20px;">
+                    <div
+                        style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: var(--radius); margin-bottom: 20px;">
                         <strong>Shipping to:</strong><br>
                         <span id="review-address" data-testid="review-address">To be populated</span>
                     </div>
 
-                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: var(--radius); margin-bottom: 20px;">
+                    <div
+                        style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: var(--radius); margin-bottom: 20px;">
                         <strong>Payment Method:</strong><br>
                         <span id="review-payment" data-testid="review-payment">Credit Card ending in XXXX</span>
                     </div>
-                    
+
                     <div>
-                        <button type="button" id="btn-back-payment" name="btn-back-payment" data-testid="btn-back-payment" onclick="nextStep(2)" style="margin-right: 10px; background: var(--border-color)">Back</button>
-                        <button type="button" id="btn-place-order" name="btn-place-order" data-testid="btn-place-order" onclick="placeOrder()">Place Order</button>
+                        <button type="button" id="btn-back-payment" name="btn-back-payment"
+                            data-testid="btn-back-payment" onclick="nextStep(2)"
+                            style="margin-right: 10px; background: var(--border-color)">Back</button>
+                        <button type="button" id="btn-place-order" name="btn-place-order" data-testid="btn-place-order"
+                            onclick="placeOrder()">Place Order</button>
                     </div>
                 </div>
 
@@ -110,7 +170,8 @@
                     <span id="checkout-total-items">Total Items (0)</span>
                     <span id="checkout-summary-total">$0.00</span>
                 </div>
-                <div class="flex-row between" style="margin-bottom: 20px; font-weight: bold; font-size: 18px; border-top: 1px solid var(--border-color); padding-top: 10px;">
+                <div class="flex-row between"
+                    style="margin-bottom: 20px; font-weight: bold; font-size: 18px; border-top: 1px solid var(--border-color); padding-top: 10px;">
                     <span>Grand Total</span>
                     <span id="checkout-grand-total">$0.00</span>
                 </div>
@@ -123,12 +184,12 @@
         function nextStep(stepNumber) {
             document.querySelectorAll('.step-container').forEach(el => el.classList.remove('step-active'));
             document.getElementById('step-' + stepNumber).classList.add('step-active');
-            
+
             if (stepNumber === 3) {
                 // Populate review
                 const addr = document.getElementById('ship-address').value;
                 const city = document.getElementById('ship-city').value;
-                if(addr) { document.getElementById('review-address').innerText = addr + ", " + city; }
+                if (addr) { document.getElementById('review-address').innerText = addr + ", " + city; }
             }
         }
 
@@ -142,4 +203,5 @@
     </script>
 
 </body>
+
 </html>
