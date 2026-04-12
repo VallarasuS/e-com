@@ -15,10 +15,10 @@
         <div class="flex-row">
             <div class="flex-row between fill-width" style="margin: auto;">
                 <div class="flex-row" style="align-items: center;">
-                    <label>NEO</label>
-                    <a class="primary" href="">Deals</a>
-                    <a href="">New Arrivals</a>
-                    <a class="primary" href="">Best Sellers</a>
+                    <a id="nav-home" name="nav-home" data-testid="nav-home" style="font-weight: bold; font-size: 18px;" href="./index.html">NEO</a>
+                    <a id="nav-deals" name="nav-deals" data-testid="nav-deals" class="primary" href="./shop.html">Deals</a>
+                    <a id="nav-new-arrivals" name="nav-new-arrivals" data-testid="nav-new-arrivals" href="./shop.html">New Arrivals</a>
+                    <a id="nav-best-sellers" name="nav-best-sellers" data-testid="nav-best-sellers" class="primary" href="./shop.html">Best Sellers</a>
                 </div>
                 <div class="flex-row flex-end" style="align-items: center">
                     <div class="flex-row" style="gap: 5px;">
@@ -28,7 +28,7 @@
                                 d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
                                 stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                        <a href="">Search</a>
+                        <a id="nav-search" name="nav-search" data-testid="nav-search" href="./search.html">Search</a>
 
                     </div>
 
@@ -47,7 +47,7 @@
                                 </g>
                             </g>
                         </svg>
-                        <a href="">Cart</a>
+                        <a id="nav-cart" name="nav-cart" data-testid="nav-cart" href="./cart.html">Cart</a>
 
                     </div>
 
@@ -58,7 +58,7 @@
                                 d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
                                 stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                        <a href="./login.html">Login</a>
+                        <a id="nav-login" name="nav-login" data-testid="nav-login" href="./login.html">Login</a>
 
                     </div>
                 </div>
@@ -121,10 +121,10 @@
                 </a>
             </div>
 
-            <div class="card fill-width">
-                <a href="./category.html">
+            <div class="card fill-width" id="cat-toys" name="cat-toys" data-testid="cat-toys">
+                <a id="cat-toys-link" name="cat-toys-link" data-testid="cat-toys-link" href="./category.html">
 
-                    <label>Toys</label>
+                    <label id="cat-toys-label" name="cat-toys-label" data-testid="cat-toys-label">Toys</label>
                     <div style="height: 100%;" class="text-center">
                         <img src="./assets/products/goku.png">
                     </div>
