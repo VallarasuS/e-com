@@ -186,6 +186,7 @@ async function fetchProducts() {
         const path = window.location.pathname;
         if (path.includes('index') || path === '/' || path.endsWith('/')) {
             renderFeatured();
+            renderCategories();
         } else if (path.includes('product.html')) {
             loadProductPage();
         } else if (path.includes('search.html')) {
@@ -196,7 +197,17 @@ async function fetchProducts() {
             renderProductGrid(allProducts.filter(p => p.isNewArrival), 'product-grid-container');
         } else if (path.includes('best-sellers.html')) {
             renderProductGrid(allProducts.filter(p => p.isBestSeller), 'product-grid-container');
-        } else if (path.includes('shop.html') || path.includes('category.html')) {
+        } else if (path.includes('category.html')) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+            if (category) {
+                renderProductGrid(allProducts.filter(p => p.category.toLowerCase() === category.toLowerCase()), 'product-grid-container');
+                let catSelect = document.getElementById('filter-cat-' + category.toLowerCase());
+                if(catSelect) catSelect.checked = true;
+            } else {
+                renderProductGrid(allProducts, 'product-grid-container');
+            }
+        } else if (path.includes('shop.html')) {
             renderProductGrid(allProducts, 'product-grid-container');
         }
 
@@ -233,6 +244,32 @@ function renderProductGrid(products, containerId) {
         `;
         container.appendChild(card);
     });
+}
+
+function renderCategories() {
+    let container = document.getElementById('home-categories-container');
+    if (!container) return;
+    
+    let categories = [...new Set(allProducts.map(p => p.category))];
+    
+    let html = '';
+    categories.forEach(cat => {
+        let firstItem = allProducts.find(p => p.category === cat);
+        let catTitle = cat.charAt(0).toUpperCase() + cat.slice(1);
+        
+        html += `
+            <div class="card fill-width" style="min-width: 200px; max-width: 30%;">
+                <a href="./category.html?category=${encodeURIComponent(cat)}" id="cat-link-${cat}" data-testid="cat-link-${cat}">
+                    <label style="position: absolute; z-index: 10; font-size: clamp(12px, 2vw, 24px);">${catTitle}</label>
+                    <div style="height: 100%;" class="text-center">
+                        <img src="${firstItem.image}" alt="${catTitle}" style="width: 100%; height: auto; margin-top: 40px; max-height: 150px; object-fit: contain;">
+                    </div>
+                </a>
+            </div>
+        `;
+    });
+    
+    container.innerHTML = html;
 }
 
 function renderFeatured() {

@@ -7,6 +7,38 @@
     <title>NEO </title>
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js"></script>
+    <style>
+        .shop-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            flex-grow: 1;
+        }
+
+        .product-card {
+            width: calc(33% - 15px);
+            text-align: center;
+        }
+
+        .filter-group {
+            margin-bottom: 20px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -66,354 +98,70 @@
         </div>
     </nav>
 
-    <main>
-        <div class="flex-row between" style="margin: 40px 0px;">
-            <label>Electronics</label>
+    <main style="margin-top: 30px;">
+        <div class="shop-container">
+            <div class="sidebar card">
+                <h4>Filters</h4>
+                <div class="filter-group">
+                    <label><strong>Category</strong></label>
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <input type="checkbox" id="filter-cat-electronics" name="filter-cat-electronics"
+                            data-testid="filter-cat-electronics" style="width: auto;">
+                        <label for="filter-cat-electronics" style="margin: 0;">Electronics</label>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <input type="checkbox" id="filter-cat-fashion" name="filter-cat-fashion"
+                            data-testid="filter-cat-fashion" style="width: auto;">
+                        <label for="filter-cat-fashion" style="margin: 0;">Fashion</label>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <input type="checkbox" id="filter-cat-toys" name="filter-cat-toys" data-testid="filter-cat-toys"
+                            style="width: auto;">
+                        <label for="filter-cat-toys" style="margin: 0;">Toys</label>
+                    </div>
+                </div>
 
-            <div>
-                <label>All</label>
-                <label>Phones</label>
-                <label>Music</label>
-                <label>Accessories</label>
+                <div class="filter-group">
+                    <label><strong>Price Range</strong></label>
+                    <input type="range" id="filter-price-slider" name="filter-price-slider"
+                        data-testid="filter-price-slider" min="0" max="1000" value="500"
+                        oninput="document.getElementById('price-val').innerText = this.value">
+                    <div>Up to $<span id="price-val">500</span></div>
+                </div>
+
+                <div class="filter-group">
+                    <label><strong>Brand (Multi-Select)</strong></label>
+                    <select id="filter-brand" name="filter-brand" data-testid="filter-brand" multiple
+                        style="height: 100px;">
+                        <option id="opt-apple" value="apple">Apple</option>
+                        <option id="opt-samsung" value="samsung">Samsung</option>
+                        <option id="opt-sony" value="sony">Sony</option>
+                        <option id="opt-nike" value="nike">Nike</option>
+                        <option id="opt-lego" value="lego">Lego</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label><strong>Availability</strong></label>
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <input type="radio" id="filter-avail-instock" name="filter-avail"
+                            data-testid="filter-avail-instock" value="instock" style="width: auto;">
+                        <label for="filter-avail-instock" style="margin: 0;">In Stock</label>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <input type="radio" id="filter-avail-outstock" name="filter-avail"
+                            data-testid="filter-avail-outstock" value="outstock" style="width: auto;">
+                        <label for="filter-avail-outstock" style="margin: 0;">Out of Stock</label>
+                    </div>
+                </div>
+
+                <button id="apply-filters-btn" name="apply-filters-btn" data-testid="apply-filters-btn"
+                    class="fill-width">Apply Filters</button>
             </div>
 
+            <div class="product-grid" id="product-grid-container">
+            </div>
         </div>
-
-        <div class="flex-row">
-
-
-            <div class="cat-filter">
-                <div>
-                    <label>Brand</label>
-                    <div>
-                        <ul>
-                            <li><label><input type="checkbox">Apple</label></li>
-                            <li><label><input type="checkbox">Samsung</label></li>
-                            <li><label><input type="checkbox">One Plus</label></li>
-                            <li><label><input type="checkbox">Nothing</label></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div>
-                    <label>Price</label>
-                    <div>
-                        <ul>
-                            <li><label><input name="price-filter" type="radio">Under 5000</label></li>
-                            <li><label><input name="price-filter" type="radio">5000-10000</label></li>
-                            <li><label><input name="price-filter" type="radio">10000-25000</label></li>
-                            <li><label><input name="price-filter" type="radio">Over 25000</label></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div>
-                    <label>Discounts</label>
-                    <div>
-                        <ul>
-                            <li><label><input type="checkbox">10% or more</label></li>
-                            <li><label><input type="checkbox">25% or more</label></li>
-                            <li><label><input type="checkbox">30% or more</label></li>
-                            <li><label><input type="checkbox">40% or more</label></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div>
-                    <label>Availability</label>
-                    <div>
-                        <ul>
-                            <li><label><input name="price-filter" type="checkbox">Out of stock</label></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div>
-                    <label>Payments</label>
-                    <div>
-                        <ul>
-                            <li><label><input name="price-filter" type="checkbox">Cash on Delivery</label></li>
-                            <li><label><input name="price-filter" type="checkbox">Pay on Delivery</label></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="flex-row between flex-wrap fill-width cat-cards">
-                <div class="card width-30 flex-col between">
-                    <a href="./product.html">
-                        <div class="text-center">
-                            <img src="./assets/products/camera.png" >
-                        </div>
-                        <div>
-                            <div class="flex-row between" style="font-size: small; opacity: 0.8;">
-                                <div>Sony</div>
-                                <div>⭐ 4.5</div>
-                            </div>
-                            <div style="font-size: larger;">₹ 75,000</div>
-                            <div style="font-size: small; opacity: 0.8;">Sony Alpha A6100</div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card width-30 flex-col between">
-                    <a href="./product.html">
-                        <div class="text-center">
-                            <img src="./assets/products/fashion-men.png" >
-                        </div>
-                        <div>
-                            <div class="flex-row between" style="font-size: small; opacity: 0.8;">
-                                <div>Sony</div>
-                                <div>⭐ 4.5</div>
-                            </div>
-                            <div style="font-size: larger;">₹ 75,000</div>
-                            <div style="font-size: small; opacity: 0.8;">Sony Alpha A6100</div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card width-30 flex-col between">
-                    <a href="./product.html">
-                        <div class="text-center">
-                            <img src="./assets/products/gaming.png" >
-                        </div>
-                        <div>
-                            <div class="flex-row between" style="font-size: small; opacity: 0.8;">
-                                <div>Sony</div>
-                                <div>⭐ 4.5</div>
-                            </div>
-                            <div style="font-size: larger;">₹ 75,000</div>
-                            <div style="font-size: small; opacity: 0.8;">Sony Alpha A6100</div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card width-30 flex-col between">
-                    <a href="./product.html">
-                        <div class="text-center">
-                            <img src="./assets/products/camera.png" >
-                        </div>
-                        <div>
-                            <div class="flex-row between" style="font-size: small; opacity: 0.8;">
-                                <div>Sony</div>
-                                <div>⭐ 4.5</div>
-                            </div>
-                            <div style="font-size: larger;">₹ 75,000</div>
-                            <div style="font-size: small; opacity: 0.8;">Sony Alpha A6100</div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card width-30 flex-col between">
-                    <a href="./product.html">
-                        <div class="text-center">
-                            <img src="./assets/products/fashion-men.png" >
-                        </div>
-                        <div>
-                            <div class="flex-row between" style="font-size: small; opacity: 0.8;">
-                                <div>Sony</div>
-                                <div>⭐ 4.5</div>
-                            </div>
-                            <div style="font-size: larger;">₹ 75,000</div>
-                            <div style="font-size: small; opacity: 0.8;">Sony Alpha A6100</div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card width-30 flex-col between">
-                    <a href="./product.html">
-                        <div class="text-center">
-                            <img src="./assets/products/gaming.png" >
-                        </div>
-                        <div>
-                            <div class="flex-row between" style="font-size: small; opacity: 0.8;">
-                                <div>Sony</div>
-                                <div>⭐ 4.5</div>
-                            </div>
-                            <div style="font-size: larger;">₹ 75,000</div>
-                            <div style="font-size: small; opacity: 0.8;">Sony Alpha A6100</div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card width-30 flex-col between">
-                    <a href="./product.html">
-                        <div class="text-center">
-                            <img src="./assets/products/camera.png" >
-                        </div>
-                        <div>
-                            <div class="flex-row between" style="font-size: small; opacity: 0.8;">
-                                <div>Sony</div>
-                                <div>⭐ 4.5</div>
-                            </div>
-                            <div style="font-size: larger;">₹ 75,000</div>
-                            <div style="font-size: small; opacity: 0.8;">Sony Alpha A6100</div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card width-30 flex-col between">
-                    <a href="./product.html">
-                        <div class="text-center">
-                            <img src="./assets/products/fashion-men.png" >
-                        </div>
-                        <div>
-                            <div class="flex-row between" style="font-size: small; opacity: 0.8;">
-                                <div>Sony</div>
-                                <div>⭐ 4.5</div>
-                            </div>
-                            <div style="font-size: larger;">₹ 75,000</div>
-                            <div style="font-size: small; opacity: 0.8;">Sony Alpha A6100</div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card width-30 flex-col between">
-                    <a href="./product.html">
-                        <div class="text-center">
-                            <img src="./assets/products/gaming.png" >
-                        </div>
-                        <div>
-                            <div class="flex-row between" style="font-size: small; opacity: 0.8;">
-                                <div>Sony</div>
-                                <div>⭐ 4.5</div>
-                            </div>
-                            <div style="font-size: larger;">₹ 75,000</div>
-                            <div style="font-size: small; opacity: 0.8;">Sony Alpha A6100</div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card width-30 flex-col between">
-                    <a href="./product.html">
-                        <div class="text-center">
-                            <img src="./assets/products/camera.png" >
-                        </div>
-                        <div>
-                            <div class="flex-row between" style="font-size: small; opacity: 0.8;">
-                                <div>Sony</div>
-                                <div>⭐ 4.5</div>
-                            </div>
-                            <div style="font-size: larger;">₹ 75,000</div>
-                            <div style="font-size: small; opacity: 0.8;">Sony Alpha A6100</div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card width-30 flex-col between">
-                    <a href="./product.html">
-                        <div class="text-center">
-                            <img src="./assets/products/fashion-men.png" >
-                        </div>
-                        <div>
-                            <div class="flex-row between" style="font-size: small; opacity: 0.8;">
-                                <div>Sony</div>
-                                <div>⭐ 4.5</div>
-                            </div>
-                            <div style="font-size: larger;">₹ 75,000</div>
-                            <div style="font-size: small; opacity: 0.8;">Sony Alpha A6100</div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card width-30 flex-col between">
-                    <a href="./product.html">
-                        <div class="text-center">
-                            <img src="./assets/products/gaming.png" >
-                        </div>
-                        <div>
-                            <div class="flex-row between" style="font-size: small; opacity: 0.8;">
-                                <div>Sony</div>
-                                <div>⭐ 4.5</div>
-                            </div>
-                            <div style="font-size: larger;">₹ 75,000</div>
-                            <div style="font-size: small; opacity: 0.8;">Sony Alpha A6100</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="footer">
-
-            <hr style="margin: 50px 0px; border-color: black;">
-
-            <div class="footer-story">
-
-                <p>
-                    Discover our E-Commerce website for automation testing practice, designed as a realistic online
-                    shopping
-                    platform to help testers hone their skills. This free demo website for automation testing serves as
-                    an
-                    ideal
-                    sample web application for automation testing and sample web application for automation testing
-                    practice,
-                    featuring common elements like product listings, shopping carts, checkout processes, user
-                    authentication,
-                    dynamic content, and responsive design.
-                </p>
-
-                <p>
-                    Whether you're working with Selenium, Cypress, Playwright, or other tools, our site offers a safe
-                    environment to build and refine UI Test Automation Playground-style scenarios without risking real
-                    systems.
-                    It's one of the top automation testing practice websites free options available, and it also doubles
-                    as
-                    a
-                    great resource for dummy sites for manual testing, allowing beginners and professionals alike to
-                    explore
-                    UI
-                    interactions, form validations, and end-to-end flows at no cost.
-                </p>
-
-            </div>
-
-            <div class="footer-menu flex-row flex-start">
-
-                <div class="card" style="background: transparent;">
-                    <h4 class="footer-label">About
-                        Us</h4>
-
-                    <div class="flex-col gap-10">
-                        <label>Our Story</label>
-                        <label>Team</label>
-                        <label>Partners</label>
-                        <label>Press</label>
-                        <label>Affiliates</label>
-                        <label>Careers</label>
-                    </div>
-
-                </div>
-                <div class="card" style="background: transparent;">
-                    <h4 class="footer-label">Customer
-                        Support</h4>
-
-                    <div class="flex-col gap-10">
-                        <label>Payments and Refund</label>
-                        <label>Shipping Policy</label>
-                        <label>Track your orders</label>
-                        <label>FAQ</label>
-                        <label>Store Locations</label>
-                    </div>
-                </div>
-
-                <div class="card" style="background: transparent;">
-                    <h4 class="footer-label">Contact Us</h4>
-
-                    <div class="flex-col gap-10">
-                        <label>Email</label>
-                        <label>Chat</label>
-                        <label>Raise a Ticket</label>
-                        <label>Call Us</label>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
     </main>
 </body>
 
