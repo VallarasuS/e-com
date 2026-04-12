@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,30 +8,92 @@
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js"></script>
     <style>
-        .profile-layout { display: flex; gap: 30px; margin-top: 30px; }
-        .sidebar-menu { width: 250px; flex-shrink: 0; }
-        .sidebar-menu a { display: block; padding: 15px; border-bottom: 1px solid var(--border-color); font-size: 16px; font-weight: bold; }
-        .sidebar-menu a:hover, .sidebar-menu a.active { background: var(--button-bg); color: var(--button-text); }
-        .profile-content { flex-grow: 1; overflow-x: auto; }
-        
+        .profile-layout {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .sidebar-menu {
+            width: 250px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background: var(--button-bg);
+            color: var(--button-text);
+        }
+
+        .profile-content {
+            flex-grow: 1;
+            overflow-x: auto;
+        }
+
         /* Automation Scenario: Complex WebTable */
-        .orders-table { width: 100%; border-collapse: collapse; min-width: 600px; }
-        .orders-table th, .orders-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--border-color); }
-        .orders-table th { background: #222; }
-        .status-badge { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
-        .status-delivered { background: #28a745; color: white; }
-        .status-processing { background: #ffc107; color: black; }
-        .status-cancelled { background: #dc3545; color: white; }
+        .orders-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        .orders-table th,
+        .orders-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .orders-table th {
+            background: #222;
+        }
+
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .status-delivered {
+            background: #28a745;
+            color: white;
+        }
+
+        .status-processing {
+            background: #ffc107;
+            color: black;
+        }
+
+        .status-cancelled {
+            background: #dc3545;
+            color: white;
+        }
     </style>
 </head>
+
 <body>
 
     <nav>
         <div class="flex-row">
             <div class="flex-row between fill-width" style="margin: auto;">
                 <div class="flex-row" style="align-items: center;">
-                    <a id="nav-home" name="nav-home" data-testid="nav-home" style="font-weight: bold; font-size: 18px;" href="./index.html">NEO</a>
-                    <a id="nav-deals" name="nav-deals" data-testid="nav-deals" class="primary" href="./shop.html">Deals</a>
+                    <a id="nav-home" name="nav-home" data-testid="nav-home" style="font-weight: bold; font-size: 18px;"
+                        href="./index.html">NEO</a>
+                    <a id="nav-deals" name="nav-deals" data-testid="nav-deals" class="primary"
+                        href="./deals.html">Deals</a>
+                    <a id="nav-new-arrivals" name="nav-new-arrivals" data-testid="nav-new-arrivals"
+                        href="./new-arrivals.html">New Arrivals</a>
+                    <a id="nav-best-sellers" name="nav-best-sellers" data-testid="nav-best-sellers" class="primary"
+                        href="./best-sellers.html">Best Sellers</a>
                 </div>
             </div>
         </div>
@@ -38,20 +101,25 @@
 
     <main>
         <h2>My Account</h2>
-        
+
         <div class="profile-layout">
             <div class="sidebar-menu card" style="padding: 0; overflow: hidden;">
-                <a id="menu-profile" name="menu-profile" data-testid="menu-profile" href="./profile.html">Profile Settings</a>
-                <a id="menu-orders" name="menu-orders" data-testid="menu-orders" href="./orders.html" class="active">Order History</a>
-                <a id="menu-addresses" name="menu-addresses" data-testid="menu-addresses" href="./addresses.html">Addresses</a>
-                <a id="menu-payments" name="menu-payments" data-testid="menu-payments" href="./payments.html">Payment Methods</a>
-                <a id="menu-wishlist" name="menu-wishlist" data-testid="menu-wishlist" href="./wishlist.html">Wishlist</a>
+                <a id="menu-profile" name="menu-profile" data-testid="menu-profile" href="./profile.html">Profile
+                    Settings</a>
+                <a id="menu-orders" name="menu-orders" data-testid="menu-orders" href="./orders.html"
+                    class="active">Order History</a>
+                <a id="menu-addresses" name="menu-addresses" data-testid="menu-addresses"
+                    href="./addresses.html">Addresses</a>
+                <a id="menu-payments" name="menu-payments" data-testid="menu-payments" href="./payments.html">Payment
+                    Methods</a>
+                <a id="menu-wishlist" name="menu-wishlist" data-testid="menu-wishlist"
+                    href="./wishlist.html">Wishlist</a>
                 <a id="menu-logout" name="menu-logout" data-testid="menu-logout" href="./index.html">Logout</a>
             </div>
 
             <div class="profile-content card">
                 <h3>Order History</h3>
-                
+
                 <!-- AUTOMATION SCENARIO: DATA TABLE SCRAPING -->
                 <table class="orders-table" id="orders-table" data-testid="orders-table">
                     <thead>
@@ -69,21 +137,24 @@
                             <td>Nov 12, 2025</td>
                             <td>$646.90</td>
                             <td><span class="status-badge status-processing">Processing</span></td>
-                            <td><button type="button" id="btn-track-9382" data-testid="btn-track-9382" onclick="alert('Tracking ID: TRK90231920X')">Track</button></td>
+                            <td><button type="button" id="btn-track-9382" data-testid="btn-track-9382"
+                                    onclick="alert('Tracking ID: TRK90231920X')">Track</button></td>
                         </tr>
                         <tr id="row-ord-8110" data-testid="row-ord-8110">
                             <td>ORD-8110</td>
                             <td>Oct 05, 2025</td>
                             <td>$129.50</td>
                             <td><span class="status-badge status-delivered">Delivered</span></td>
-                            <td><button type="button" id="btn-return-8110" data-testid="btn-return-8110" style="background:#444">Return</button></td>
+                            <td><button type="button" id="btn-return-8110" data-testid="btn-return-8110"
+                                    style="background:#444">Return</button></td>
                         </tr>
                         <tr id="row-ord-7001" data-testid="row-ord-7001">
                             <td>ORD-7001</td>
                             <td>Sep 21, 2025</td>
                             <td>$2,199.00</td>
                             <td><span class="status-badge status-cancelled">Cancelled</span></td>
-                            <td><button type="button" id="btn-reorder-7001" data-testid="btn-reorder-7001">Reorder</button></td>
+                            <td><button type="button" id="btn-reorder-7001"
+                                    data-testid="btn-reorder-7001">Reorder</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -93,4 +164,5 @@
     </main>
 
 </body>
+
 </html>
