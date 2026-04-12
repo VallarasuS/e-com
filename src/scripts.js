@@ -176,12 +176,16 @@ function removeCartItem(id) {
 }
 
 let allProducts = [];
-
+let allBrands = [];
+let allSubCategories = [];
 async function fetchProducts() {
     try {
         let response = await fetch('./assets/products.json');
         if (!response.ok) throw new Error("Network response was not ok");
-        allProducts = await response.json();
+        let data = await response.json();
+        allProducts = data.products || [];
+        allBrands = data.brands || [];
+        allSubCategories = data.subCategories || [];
 
         const path = window.location.pathname;
         if (path.includes('index') || path === '/' || path.endsWith('/')) {
@@ -209,6 +213,12 @@ async function fetchProducts() {
             }
         } else if (path.includes('shop.html')) {
             renderProductGrid(allProducts, 'product-grid-container');
+        } else if (path.includes('brands.html')) {
+            renderBrands();
+        } else if (path.includes('brand.html')) {
+            loadBrandPage();
+        } else if (path.includes('sub-category.html')) {
+            loadSubCategoryPage();
         }
 
     } catch (e) {
@@ -376,6 +386,60 @@ function loadProductPage() {
             };
         }
     }
+}
+
+function renderBrands() {
+    let container = document.getElementById('brands-grid-container');
+    if (!container) return;
+
+    container.innerHTML = '';
+    if (allBrands.length === 0) {
+        container.innerHTML = '<p>No brands found.</p>';
+        return;
+    }
+
+    allBrands.forEach(b => {
+        let card = document.createElement('div');
+        card.className = 'card brand-card text-center';
+        card.style.cursor = 'pointer';
+        card.onclick = () => window.location.href = `./brand.html?id=${b.id}`;
+        card.innerHTML = `
+            <img src="${b.image}" alt="${b.name}" style="width: 100%; max-height: 150px; object-fit: contain;">
+            <h4 style="margin-top: 15px;">${b.name}</h4>
+        `;
+        container.appendChild(card);
+    });
+}
+
+function loadBrandPage() {
+    const params = new URLSearchParams(window.location.search);
+    const brandId = params.get('id');
+    
+    let brand = allBrands.find(b => b.id === brandId);
+    if (!brand && allBrands.length > 0) brand = allBrands[0];
+
+    if (brand) {
+        let title = document.getElementById('brand-title');
+        if (title) title.innerText = brand.name;
+
+        let desc = document.getElementById('brand-desc');
+        if (desc) desc.innerText = brand.description;
+
+        renderProductGrid(allProducts.filter(p => p.brand === brand.id), 'brand-products-container');
+    }
+}
+
+function loadSubCategoryPage() {
+    const params = new URLSearchParams(window.location.search);
+    const subCatId = params.get('id');
+
+    let subCat = allSubCategories.find(s => s.id === subCatId);
+    if (subCat) {
+        let title = document.getElementById('subcategory-title');
+        if (title) title.innerText = subCat.name;
+    }
+
+    renderProductGrid(allProducts.filter(p => p.subCategory === subCatId), 'subcategory-products-container');
 }
 
 document.addEventListener('DOMContentLoaded', () => {

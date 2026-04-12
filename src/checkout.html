@@ -194,9 +194,34 @@
         }
 
         function placeOrder() {
-            // Automation scenario: Simulate network delay so explicit wait is required
+            // Document references
             document.getElementById('processing-overlay').style.display = 'block';
+
+            // Automation scenario: Simulate network delay so explicit wait is required
             setTimeout(() => {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                if (cart.length > 0) {
+                    let subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+                    let tax = subtotal * 0.08;
+                    let total = subtotal + tax;
+
+                    let newOrder = {
+                        id: 'ORD-' + Math.floor(Math.random() * 1000000),
+                        date: new Date().toISOString().split('T')[0],
+                        total: total.toFixed(2),
+                        status: 'Processing',
+                        items: cart,
+                        address: document.getElementById('ship-address').value + ", " + document.getElementById('ship-city').value
+                    };
+
+                    let orders = JSON.parse(localStorage.getItem('orders')) || [];
+                    orders.unshift(newOrder); // Add to beginning
+                    localStorage.setItem('orders', JSON.stringify(orders));
+
+                    // Clear Cart
+                    localStorage.removeItem('cart');
+                }
+                
                 window.location.href = './success.html';
             }, 3000); // 3 second delay
         }

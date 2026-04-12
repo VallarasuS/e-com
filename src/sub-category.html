@@ -41,50 +41,9 @@
         </div>
     </nav>
     <main>
-    <h2>My Account</h2>
-    <div class="profile-layout">
-        <div class="sidebar-menu card" style="padding: 0; overflow: hidden;">
-            <a href="./profile.html">Profile Settings</a>
-            <a href="./orders.html" class="active">Order History</a>
-            <a href="./addresses.html">Addresses</a>
-            <a href="./payments.html">Payment Methods</a>
-            <a href="./wishlist.html">Wishlist</a>
-            <a href="./index.html">Logout</a>
-        </div>
-        <div class="profile-content card">
-            <h3>Order History</h3>
-            <table class="orders-table" id="orders-table">
-                <thead><tr><th>Order ID</th><th>Date</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead>
-                <tbody id="orders-tbody">
-                    <!-- Dynamic Rows -->
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const orders = JSON.parse(localStorage.getItem('orders')) || [];
-            const tbody = document.getElementById('orders-tbody');
-            if(orders.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5">No orders found.</td></tr>';
-            } else {
-                tbody.innerHTML = orders.map(o => `
-                    <tr>
-                        <td>${o.id}</td>
-                        <td>${o.date}</td>
-                        <td>$${o.total}</td>
-                        <td><span class="status-badge ${o.status === 'Cancelled' ? 'status-cancelled' : 'status-processing'}">${o.status}</span></td>
-                        <td>
-                            <button onclick="window.location.href='./order-detail.html?id=${o.id}'">View</button>
-                            ${o.status === 'Processing' ? \`<button onclick="window.location.href='./cancel-request.html?id=${o.id}'" style="background:#dc3545">Cancel</button>\` : ''}
-                            ${o.status === 'Delivered' ? \`<button onclick="window.location.href='./return-request.html?id=${o.id}'" style="background:#ffc107;color:black">Return</button>\` : ''}
-                        </td>
-                    </tr>
-                `).join('');
-            }
-        });
-    </script>
-
+        <div class="page-header"><h2 id="subcategory-title">Sub Category</h2></div>
+        <div id="subcategory-products-container" class="flex-row fill-width flex-wrap product-grid" style="gap: 15px; justify-content: center;"></div>
+    
     </main>
     <div class="footer">
         <hr style="margin: 50px 0px; border-color: black;">
