@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo - New Arrivals</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+    <style>
+        .shop-container { display: flex; gap: 20px; }
+        .sidebar { width: 250px; flex-shrink: 0; }
+        .product-grid { display: flex; flex-wrap: wrap; gap: 20px; flex-grow: 1; }
+        .product-card { width: calc(33% - 15px); text-align: center; }
+        .filter-group { margin-bottom: 20px; }
+        .filter-group label { display: block; margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="flex-row">
+            <div class="flex-row between fill-width" style="margin: auto;">
+                <div class="flex-row" style="align-items: center;">
+                    <a id="nav-home" name="nav-home" data-testid="nav-home" style="font-weight: bold; font-size: 18px;" href="./index.html">NEO</a>
+                    <a id="nav-deals" name="nav-deals" data-testid="nav-deals" class="primary" href="./deals.html">Deals</a>
+                    <a id="nav-new-arrivals" name="nav-new-arrivals" data-testid="nav-new-arrivals" href="./new-arrivals.html">New Arrivals</a>
+                    <a id="nav-best-sellers" name="nav-best-sellers" data-testid="nav-best-sellers" class="primary" href="./best-sellers.html">Best Sellers</a>
+                </div>
+                <div class="flex-row flex-end" style="align-items: center">
+                    <div class="flex-row" style="gap: 5px;">
+                        <svg width="18px" height="auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <a id="nav-search" name="nav-search" data-testid="nav-search" href="./search.html">Search</a>
+                    </div>
+                    <div class="flex-row" style="gap: 5px;">
+                        <svg width="18px" height="auto" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g transform="translate(-220.000000, -3119.000000)" fill="#fff">
+                                    <g transform="translate(56.000000, 160.000000)">
+                                        <path d="M180.846448,2977 L167.153448,2977 C166.544448,2977 166.077448,2976.461 166.163448,2975.859 L167.306448,2967.859 C167.376448,2967.366 167.798448,2967 168.296448,2967 L168.999448,2967 L168.999448,2969 C168.999448,2969.552 169.447448,2970 169.999448,2970 C170.552448,2970 170.999448,2969.552 170.999448,2969 L170.999448,2967 L176.999448,2967 L176.999448,2969 C176.999448,2969.552 177.447448,2970 177.999448,2970 C178.552448,2970 178.999448,2969.552 178.999448,2969 L178.999448,2967 L179.703448,2967 C180.201448,2967 180.623448,2967.366 180.693448,2967.859 L181.836448,2975.859 C181.922448,2976.461 181.455448,2977 180.846448,2977 L180.846448,2977 Z M170.999448,2964 C170.999448,2962.346 172.345448,2961 173.999448,2961 C175.654448,2961 176.999448,2962 176.999448,2964 L176.999448,2965 L170.999448,2965 L170.999448,2964 Z M183.979448,2976.717 L182.550448,2966.717 C182.410448,2965.732 181.566448,2965 180.570448,2965 L178.999448,2965 L178.999448,2964 C178.999448,2961 176.756448,2959 173.999448,2959 C171.243448,2959 168.999448,2961.243 168.999448,2964 L168.999448,2965 L167.734448,2965 C166.739448,2965 165.589448,2965.732 165.448448,2966.717 L164.020448,2976.717 C163.848448,2977.922 164.783448,2979 166.000448,2979 L181.999448,2979 C183.216448,2979 184.151448,2977.922 183.979448,2976.717 L183.979448,2976.717 Z"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                        <a id="nav-cart" name="nav-cart" data-testid="nav-cart" href="./cart.html">Cart</a>
+                    </div>
+                    <div class="flex-row" style="gap: 5px;">
+                        <svg width="18px" height="auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <a id="nav-login" name="nav-login" data-testid="nav-login" href="./login.html">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main style="margin-top: 30px;">
+        <div class="shop-container">
+            <div class="sidebar card">
+                <h4>Filters</h4>
+                <div class="filter-group">
+                    <label><strong>Category</strong></label>
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <input type="checkbox" id="filter-cat-electronics" name="filter-cat-electronics" data-testid="filter-cat-electronics" style="width: auto;">
+                        <label for="filter-cat-electronics" style="margin: 0;">Electronics</label>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <input type="checkbox" id="filter-cat-fashion" name="filter-cat-fashion" data-testid="filter-cat-fashion" style="width: auto;">
+                        <label for="filter-cat-fashion" style="margin: 0;">Fashion</label>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <input type="checkbox" id="filter-cat-toys" name="filter-cat-toys" data-testid="filter-cat-toys" style="width: auto;">
+                        <label for="filter-cat-toys" style="margin: 0;">Toys</label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label><strong>Price Range</strong></label>
+                    <input type="range" id="filter-price-slider" name="filter-price-slider" data-testid="filter-price-slider" min="0" max="1000" value="500" oninput="document.getElementById('price-val').innerText = this.value">
+                    <div>Up to $<span id="price-val">500</span></div>
+                </div>
+
+                <div class="filter-group">
+                    <label><strong>Brand (Multi-Select)</strong></label>
+                    <select id="filter-brand" name="filter-brand" data-testid="filter-brand" multiple style="height: 100px;">
+                        <option id="opt-apple" value="apple">Apple</option>
+                        <option id="opt-samsung" value="samsung">Samsung</option>
+                        <option id="opt-sony" value="sony">Sony</option>
+                        <option id="opt-nike" value="nike">Nike</option>
+                        <option id="opt-lego" value="lego">Lego</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label><strong>Availability</strong></label>
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <input type="radio" id="filter-avail-instock" name="filter-avail" data-testid="filter-avail-instock" value="instock" style="width: auto;">
+                        <label for="filter-avail-instock" style="margin: 0;">In Stock</label>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <input type="radio" id="filter-avail-outstock" name="filter-avail" data-testid="filter-avail-outstock" value="outstock" style="width: auto;">
+                        <label for="filter-avail-outstock" style="margin: 0;">Out of Stock</label>
+                    </div>
+                </div>
+
+                <button id="apply-filters-btn" name="apply-filters-btn" data-testid="apply-filters-btn" class="fill-width">Apply Filters</button>
+            </div>
+
+            <div class="product-grid">
+                <div class="card product-card">
+                    <a id="product-lens-link" href="./product.html"><img src="./assets/products/camera.png" alt="Camera Lens"></a>
+                    <h4>Pro Camera Lens</h4>
+                    <p>$450.00</p>
+                    <button type="button" id="add-to-cart-lens" name="add-to-cart-lens" data-testid="add-to-cart-lens" class="fill-width" onclick="addToCart('lens-1', 'Pro Camera Lens', 450.00, './assets/products/camera.png')">Add to Cart</button>
+                </div>
+                <div class="card product-card">
+                    <a id="product-fashion-link" href="./product.html"><img src="./assets/products/fashion-men.png" alt="Men Fashion"></a>
+                    <h4>Casual Jacket</h4>
+                    <p>$89.99</p>
+                    <button type="button" id="add-to-cart-jacket" name="add-to-cart-jacket" data-testid="add-to-cart-jacket" class="fill-width" onclick="addToCart('jacket-1', 'Casual Jacket', 89.99, './assets/products/fashion-men.png')">Add to Cart</button>
+                </div>
+                <div class="card product-card">
+                    <a id="product-toys-link" href="./product.html"><img src="./assets/products/goku.png" alt="Action Figure"></a>
+                    <h4>Action Figure</h4>
+                    <p>$25.00</p>
+                    <button type="button" id="add-to-cart-figure" name="add-to-cart-figure" data-testid="add-to-cart-figure" class="fill-width" onclick="addToCart('fig-1', 'Action Figure', 25.00, './assets/products/goku.png')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

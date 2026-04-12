@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo - User Profile</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+    <style>
+        .profile-layout { display: flex; gap: 30px; margin-top: 30px; }
+        .sidebar-menu { width: 250px; flex-shrink: 0; }
+        .sidebar-menu a { display: block; padding: 15px; border-bottom: 1px solid var(--border-color); font-size: 16px; font-weight: bold; }
+        .sidebar-menu a:hover, .sidebar-menu a.active { background: var(--button-bg); color: var(--button-text); }
+        .profile-content { flex-grow: 1; }
+        .avatar-preview { width: 100px; height: 100px; border-radius: 50%; background: #333; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; overflow: hidden; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="flex-row">
+            <div class="flex-row between fill-width" style="margin: auto;">
+                <div class="flex-row" style="align-items: center;">
+                    <a id="nav-home" name="nav-home" data-testid="nav-home" style="font-weight: bold; font-size: 18px;" href="./index.html">NEO</a>
+                    <a id="nav-deals" name="nav-deals" data-testid="nav-deals" class="primary" href="./shop.html">Deals</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <h2>My Account</h2>
+        
+        <div class="profile-layout">
+            <div class="sidebar-menu card" style="padding: 0; overflow: hidden;">
+                <a id="menu-profile" name="menu-profile" data-testid="menu-profile" href="./profile.html" class="active">Profile Settings</a>
+                <a id="menu-orders" name="menu-orders" data-testid="menu-orders" href="./orders.html">Order History</a>
+                <a id="menu-addresses" name="menu-addresses" data-testid="menu-addresses" href="./addresses.html">Addresses</a>
+                <a id="menu-payments" name="menu-payments" data-testid="menu-payments" href="./payments.html">Payment Methods</a>
+                <a id="menu-wishlist" name="menu-wishlist" data-testid="menu-wishlist" href="./wishlist.html">Wishlist</a>
+                <a id="menu-logout" name="menu-logout" data-testid="menu-logout" href="./index.html">Logout</a>
+            </div>
+
+            <div class="profile-content card">
+                <h3>Personal Information</h3>
+                
+                <form id="profile-form" name="profile-form" data-testid="profile-form" onsubmit="event.preventDefault(); alert('Profile updated!');">
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label>Profile Avatar</label>
+                        <div class="avatar-preview">
+                            <img src="./assets/products/gaming.png" id="avatar-img" alt="Avatar" style="width: 100%; height: 100%;">
+                        </div>
+                        <!-- AUTOMATION SCENARIO: FILE UPLOAD -->
+                        <input type="file" id="profile-avatar" name="profile-avatar" data-testid="profile-avatar" accept="image/*">
+                    </div>
+
+                    <div class="flex-row">
+                        <div style="width: 50%;">
+                            <label>First Name</label>
+                            <input type="text" id="profile-fname" name="profile-fname" data-testid="profile-fname" value="John" required>
+                        </div>
+                        <div style="width: 50%;">
+                            <label>Last Name</label>
+                            <input type="text" id="profile-lname" name="profile-lname" data-testid="profile-lname" value="Doe" required>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 15px;">
+                        <label>Email Address</label>
+                        <input type="email" id="profile-email" name="profile-email" data-testid="profile-email" value="john.doe@example.com" readonly style="background: #222;">
+                    </div>
+
+                    <div style="margin-top: 15px;">
+                        <label>Phone Number</label>
+                        <input type="tel" id="profile-phone" name="profile-phone" data-testid="profile-phone" value="+1 555-0192">
+                    </div>
+
+                    <div style="margin-top: 15px;">
+                        <label>Notification Preferences</label>
+                        <div class="flex-row" style="gap: 15px; margin-top: 10px;">
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <input type="checkbox" id="pref-email" name="pref-email" data-testid="pref-email" checked style="width: auto; margin:0;">
+                                <label for="pref-email" style="margin: 0;">Email Alerts</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <input type="checkbox" id="pref-sms" name="pref-sms" data-testid="pref-sms" style="width: auto; margin:0;">
+                                <label for="pref-sms" style="margin: 0;">SMS Alerts</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="btn-save-profile" name="btn-save-profile" data-testid="btn-save-profile" style="margin-top: 25px;">Save Changes</button>
+
+                </form>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
