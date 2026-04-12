@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,53 @@
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js"></script>
     <style>
-        .cart-container { display: flex; gap: 30px; margin-top: 30px;}
-        .cart-items { flex-grow: 1; }
-        .cart-summary { width: 350px; flex-shrink: 0; }
-        .cart-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding: 15px 0; }
-        .cart-item img { width: 80px; height: 80px; object-fit: cover; border-radius: var(--radius) }
-        .qty-input { width: 60px; padding: 5px; text-align: center; }
-        .remove-btn { background: #ff4d4d; color: white; border: none; padding: 8px 12px; cursor: pointer; border-radius: var(--radius); }
+        .cart-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .cart-items {
+            flex-grow: 1;
+        }
+
+        .cart-summary {
+            width: 350px;
+            flex-shrink: 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+        }
+
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: var(--radius)
+        }
+
+        .qty-input {
+            width: 60px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .remove-btn {
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: var(--radius);
+        }
     </style>
 </head>
+
 <body>
 
     <nav>
@@ -23,15 +62,22 @@
         <div class="flex-row">
             <div class="flex-row between fill-width" style="margin: auto;">
                 <div class="flex-row" style="align-items: center;">
-                    <a id="nav-home" name="nav-home" data-testid="nav-home" style="font-weight: bold; font-size: 18px;" href="./index.html">NEO</a>
-                    <a id="nav-deals" name="nav-deals" data-testid="nav-deals" class="primary" href="./shop.html">Deals</a>
-                    <a id="nav-new-arrivals" name="nav-new-arrivals" data-testid="nav-new-arrivals" href="./shop.html">New Arrivals</a>
-                    <a id="nav-best-sellers" name="nav-best-sellers" data-testid="nav-best-sellers" class="primary" href="./shop.html">Best Sellers</a>
+                    <a id="nav-home" name="nav-home" data-testid="nav-home" style="font-weight: bold; font-size: 18px;"
+                        href="./index.html">NEO</a>
+                    <a id="nav-deals" name="nav-deals" data-testid="nav-deals" class="primary"
+                        href="./deals.html">Deals</a>
+                    <a id="nav-new-arrivals" name="nav-new-arrivals" data-testid="nav-new-arrivals"
+                        href="./new-arrivals.html">New Arrivals</a>
+                    <a id="nav-best-sellers" name="nav-best-sellers" data-testid="nav-best-sellers" class="primary"
+                        href="./best-sellers.html">Best Sellers</a>
                 </div>
                 <div class="flex-row flex-end" style="align-items: center">
                     <div class="flex-row" style="gap: 5px;">
-                        <svg width="18px" height="auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <svg width="18px" height="auto" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
+                                stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         <a id="nav-search" name="nav-search" data-testid="nav-search" href="./search.html">Search</a>
                     </div>
@@ -42,7 +88,7 @@
 
     <main>
         <h2>Your Shopping Cart</h2>
-        
+
         <div class="cart-container">
             <div class="cart-items card" id="cart-items-container">
             </div>
@@ -57,7 +103,8 @@
                     <span>Tax (8%)</span>
                     <span id="summary-tax" data-testid="summary-tax">$47.91</span>
                 </div>
-                <div class="flex-row between" style="margin-bottom: 20px; font-weight: bold; font-size: 18px; border-top: 1px solid var(--border-color); padding-top: 10px;">
+                <div class="flex-row between"
+                    style="margin-bottom: 20px; font-weight: bold; font-size: 18px; border-top: 1px solid var(--border-color); padding-top: 10px;">
                     <span>Total</span>
                     <span id="summary-total" data-testid="summary-total">$646.90</span>
                 </div>
@@ -65,18 +112,96 @@
                 <div style="margin-bottom: 20px;">
                     <label style="font-size: 12px;">Got a Promo Code?</label>
                     <div class="flex-row" style="gap: 5px;">
-                        <input type="text" id="promo-code" name="promo-code" data-testid="promo-code" placeholder="Enter Code">
-                        <button type="button" id="apply-promo-btn" name="apply-promo-btn" data-testid="apply-promo-btn">Apply</button>
+                        <input type="text" id="promo-code" name="promo-code" data-testid="promo-code"
+                            placeholder="Enter Code">
+                        <button type="button" id="apply-promo-btn" name="apply-promo-btn"
+                            data-testid="apply-promo-btn">Apply</button>
                     </div>
                 </div>
 
                 <a href="./checkout.html" style="text-decoration: none;">
-                    <button type="button" id="checkout-btn" name="checkout-btn" data-testid="checkout-btn" class="fill-width">Proceed to Checkout</button>
+                    <button type="button" id="checkout-btn" name="checkout-btn" data-testid="checkout-btn"
+                        class="fill-width">Proceed to Checkout</button>
                 </a>
             </div>
         </div>
 
     </main>
+<div class="footer">
+
+        <hr style="margin: 50px 0px; border-color: black;">
+
+        <div class="footer-story">
+
+            <p>
+                Discover our E-Commerce website for automation testing practice, designed as a realistic online shopping
+                platform to help testers hone their skills. This free demo website for automation testing serves as an
+                ideal
+                sample web application for automation testing and sample web application for automation testing
+                practice,
+                featuring common elements like product listings, shopping carts, checkout processes, user
+                authentication,
+                dynamic content, and responsive design.
+            </p>
+
+            <p>
+                Whether you're working with Selenium, Cypress, Playwright, or other tools, our site offers a safe
+                environment to build and refine UI Test Automation Playground-style scenarios without risking real
+                systems.
+                It's one of the top automation testing practice websites free options available, and it also doubles as
+                a
+                great resource for dummy sites for manual testing, allowing beginners and professionals alike to explore
+                UI
+                interactions, form validations, and end-to-end flows at no cost.
+            </p>
+
+        </div>
+
+        <div class="footer-menu flex-row flex-start">
+
+            <div class="card" style="background: transparent;">
+                <h4 class="footer-label">About
+                    Us</h4>
+
+                <div class="flex-col gap-10">
+                    <a href="./about.html">Our Story</a>
+                    <a href="./team.html">Team</a>
+                    <a href="./partners.html">Partners</a>
+                    <a href="./press.html">Press</a>
+                    <a href="./affiliates.html">Affiliates</a>
+                    <a href="./careers.html">Careers</a>
+                    <a href="./pages.html">All Pages</a>
+                </div>
+
+            </div>
+            <div class="card" style="background: transparent;">
+                <h4 class="footer-label">Customer
+                    Support</h4>
+
+                <div class="flex-col gap-10">
+                    <a href="./refund-policy.html">Payments and Refund</a>
+                    <a href="./shipping-policy.html">Shipping Policy</a>
+                    <a href="./order-tracking.html">Track your orders</a>
+                    <a href="./faq.html">FAQ</a>
+                    <a href="./store-locations.html">Store Locations</a>
+                </div>
+            </div>
+
+            <div class="card" style="background: transparent;">
+                <h4 class="footer-label">Contact Us</h4>
+
+                <div class="flex-col gap-10">
+                    <a href="./contact.html">Email</a>
+                    <a href="./chat.html">Chat</a>
+                    <a href="./raise-ticket.html">Raise a Ticket</a>
+                    <a href="./call-us.html">Call Us</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
 
     <script>
         function removeItem(rowId) {
@@ -92,4 +217,5 @@
     </script>
 
 </body>
+
 </html>
