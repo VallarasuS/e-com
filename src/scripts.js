@@ -175,4 +175,163 @@ function removeCartItem(id) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', updateCartDisplay);
+let allProducts = [];
+
+async function fetchProducts() {
+    try {
+        let response = await fetch('./assets/products.json');
+        if (!response.ok) throw new Error("Network response was not ok");
+        allProducts = await response.json();
+        
+        const path = window.location.pathname;
+        if (path.includes('index') || path === '/' || path.endsWith('/')) {
+            renderFeatured();
+        } else if (path.includes('product.html')) {
+            loadProductPage();
+        } else if (path.includes('search.html')) {
+            renderProductGrid(allProducts, 'search-grid-container');
+        } else if (path.includes('deals.html')) {
+            renderProductGrid(allProducts.filter(p => p.isDeal), 'product-grid-container');
+        } else if (path.includes('new-arrivals.html')) {
+            renderProductGrid(allProducts.filter(p => p.isNewArrival), 'product-grid-container');
+        } else if (path.includes('best-sellers.html')) {
+            renderProductGrid(allProducts.filter(p => p.isBestSeller), 'product-grid-container');
+        } else if (path.includes('shop.html') || path.includes('category.html')) {
+            renderProductGrid(allProducts, 'product-grid-container');
+        }
+        
+    } catch (e) {
+        console.error("Failed to load products.json", e);
+    }
+}
+
+function renderProductGrid(products, containerId) {
+    let container = document.getElementById(containerId);
+    if (!container) return;
+    
+    container.innerHTML = '';
+    if (products.length === 0) {
+        container.innerHTML = '<p>No products found matching your criteria.</p>';
+        return;
+    }
+    
+    products.forEach(p => {
+        let card = document.createElement('div');
+        card.className = 'card product-card';
+        card.innerHTML = `
+            <a id="link-${p.id}" href="./product.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a>
+            <h4>${p.name}</h4>
+            <p>$${parseFloat(p.price).toFixed(2)}</p>
+            <button type="button" id="add-to-cart-${p.id}" name="add-to-cart-${p.id}" data-testid="add-to-cart-${p.id}" class="fill-width" onclick="addToCart('${p.id}', '${p.name}', ${p.price}, '${p.image}')">Add to Cart</button>
+        `;
+        container.appendChild(card);
+    });
+}
+
+function renderFeatured() {
+    let featuredPhonesContainer1 = document.getElementById('featured-phones-1');
+    let featuredPhonesContainer2 = document.getElementById('featured-phones-2');
+    let featuredProducts = allProducts.filter(p => p.isFeatured);
+    
+    let buildFeaturedHtml = () => {
+        return featuredProducts.map(p => `
+            <div style="flex: 1; padding: 5px; text-align: center;">
+                <a href="./product.html?id=${p.id}"><img src="${p.image}" width="100%" height="auto" style="max-height: 200px; object-fit: contain;"></a>
+                <div style="font-size: small; margin-top:10px;">${p.name}</div>
+            </div>
+        `).join('');
+    };
+    
+    if (featuredPhonesContainer1) featuredPhonesContainer1.innerHTML = buildFeaturedHtml();
+    if (featuredPhonesContainer2) featuredPhonesContainer2.innerHTML = buildFeaturedHtml();
+}
+
+function applyFilters() {
+    let containerId = document.getElementById('search-grid-container') ? 'search-grid-container' : 'product-grid-container';
+    if (!document.getElementById(containerId)) return;
+    
+    let filtered = [...allProducts];
+    
+    const path = window.location.pathname;
+    if (path.includes('deals.html')) filtered = filtered.filter(p => p.isDeal);
+    if (path.includes('new-arrivals.html')) filtered = filtered.filter(p => p.isNewArrival);
+    if (path.includes('best-sellers.html')) filtered = filtered.filter(p => p.isBestSeller);
+    
+    let cats = [];
+    if (document.getElementById('filter-cat-electronics')?.checked) cats.push('electronics');
+    if (document.getElementById('filter-cat-fashion')?.checked) cats.push('fashion');
+    if (document.getElementById('filter-cat-toys')?.checked) cats.push('toys');
+    if (cats.length > 0) filtered = filtered.filter(p => cats.includes(p.category));
+    
+    let brandSelect = document.getElementById('filter-brand');
+    if (brandSelect && brandSelect.selectedOptions) {
+        let brands = Array.from(brandSelect.selectedOptions).map(opt => opt.value);
+        if (brands.length > 0 && !brands.includes('')) filtered = filtered.filter(p => brands.includes(p.brand));
+    }
+    
+    let priceSlider = document.getElementById('filter-price-slider');
+    if (priceSlider) {
+        let maxPrice = parseFloat(priceSlider.value);
+        filtered = filtered.filter(p => p.price <= maxPrice);
+    }
+    
+    let availInStock = document.getElementById('filter-avail-instock');
+    let availOutStock = document.getElementById('filter-avail-outstock');
+    if (availInStock?.checked) {
+        filtered = filtered.filter(p => p.availability === 'instock');
+    } else if (availOutStock?.checked) {
+        filtered = filtered.filter(p => p.availability === 'outstock');
+    }
+    
+    renderProductGrid(filtered, containerId);
+}
+
+function loadProductPage() {
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get('id');
+    
+    let product = allProducts.find(p => p.id === productId);
+    if (!product) product = allProducts.find(p => p.id === 'phone-1') || allProducts[0];
+    
+    if (product) {
+        let pdImage = document.getElementById('pd-image');
+        if (pdImage) pdImage.src = product.image;
+        
+        let pdName = document.getElementById('pd-name');
+        if (pdName) pdName.innerText = product.name;
+        
+        let pdBrand = document.getElementById('pd-brand');
+        if (pdBrand) pdBrand.innerText = product.brand.toUpperCase();
+        
+        let pdPrice = document.getElementById('pd-price');
+        if (pdPrice) pdPrice.innerText = '₹ ' + product.price.toFixed(2);
+        
+        let pdDesc = document.getElementById('pd-desc');
+        if (pdDesc) pdDesc.innerText = product.description;
+        
+        let pdRating = document.getElementById('pd-rating');
+        if (pdRating) pdRating.innerText = product.rating + ' ⭐';
+        
+        let pdReviews = document.getElementById('pd-reviews');
+        if (pdReviews) pdReviews.innerText = '(' + product.reviews + ')';
+        
+        let addBtn = document.getElementById('btn-add-to-cart');
+        if (addBtn) {
+            addBtn.onclick = () => {
+                addToCart(product.id, product.name, product.price, product.image);
+                window.location.href='./cart.html';
+            };
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateCartDisplay();
+    
+    let filterBtn = document.getElementById('apply-filters-btn');
+    if (filterBtn) {
+        filterBtn.addEventListener('click', applyFilters);
+    }
+    
+    fetchProducts();
+});
